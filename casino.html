@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<title>Yarik-Battle — CS2 кейсы и апгрейд</title>
+<title>Yarik-Battle — CS2 кейсы и апгрейд · v25</title>
 <style>
 :root{--bg:#101113;--panel:#181a1e;--panel2:#202329;--line:#2d3037;--text:#f3f4f6;--muted:#8b909a;--accent:#e6a13a;--accent2:#f8be5c;--green:#68c995;--red:#ed6470;--blue:#65a9ee;--purple:#ad7cff;--pink:#e66bc0;--orange:#e7a23d;--shadow:0 12px 36px #0005}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 Arial,Helvetica,sans-serif}button,input,select{font:inherit}button{cursor:pointer;border:0;color:inherit}a{color:inherit;text-decoration:none}.app{min-height:100vh;background:radial-gradient(ellipse at 52% -15%,#292a2d 0,#151619 42%,#101113 76%)}
@@ -626,6 +626,223 @@ button,input,select,textarea{font:inherit}button{transition:transform .22s ease,
 @media(prefers-reduced-motion:reduce){.upgrade-center-column .wheel-pointer-rotor{transition:none}}
 </style>
 
+
+<style id="yarik-battle-v19-upgrade-polish">
+/* Full-width, balanced desktop workspace */
+.app:has(#page-upgrade.active) .main{width:100%!important;max-width:none!important;margin:0!important;padding:22px clamp(18px,2.6vw,46px) 42px!important}
+#page-upgrade{width:100%;max-width:none!important}
+.upgrade-screen-head,.upgrade-redesign{width:100%!important;max-width:none!important;margin-left:auto!important;margin-right:auto!important}
+.upgrade-screen-head{min-height:68px!important;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)!important;align-items:center!important;margin-bottom:16px!important}
+.upgrade-screen-head .upgrade-page-title{justify-self:center!important;margin:0!important}
+.upgrade-screen-head .upgrade-global-tools{justify-self:start!important;align-self:center!important;margin:0!important}
+.upgrade-head-spacer{justify-self:end!important}
+.upgrade-hero-row{width:100%!important;grid-template-columns:minmax(0,1fr) minmax(300px,340px) minmax(0,1fr)!important;gap:clamp(18px,2.6vw,48px)!important;align-items:stretch!important}
+.upgrade-hero-row>.upgrade-side{width:100%;min-width:0}
+.upgrade-selected-source .upgrade-picked,.upgrade-selected-target .upgrade-picked{height:clamp(300px,24vw,365px)!important;min-height:300px!important}
+.upgrade-selected-target .upgrade-picked{transition:border-color .22s,background .22s,box-shadow .22s!important}
+.upgrade-selected-target .upgrade-picked.upgrade-result-pinned{border-color:#4a4b36!important;box-shadow:inset 0 0 0 1px #d7b74a15,0 8px 28px #0003!important}
+.upgrade-selected-target .upgrade-picked.upgrade-result-item-in{animation:ybResultPanelIn .38s cubic-bezier(.2,.8,.2,1) both}
+@keyframes ybResultPanelIn{0%{opacity:.72;transform:translateY(7px) scale(.99)}65%{opacity:1;transform:translateY(-1px) scale(1.004)}100%{opacity:1;transform:translateY(0) scale(1)}}
+.upgrade-center-column{padding-top:26px!important}
+.upgrade-center-column .wheel-wrap{width:min(100%,320px)!important;height:auto!important;aspect-ratio:1!important;margin:4px auto 22px!important}
+.upgrade-center-column .wheel-label{font-size:clamp(26px,2.2vw,34px)!important}
+.upgrade-lists-row{width:100%!important;max-width:none!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:16px!important;margin-top:28px!important}
+.upgrade-lists-row>.upgrade-side{min-width:0}
+.upgrade-lists-row .target-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important}
+.upgrade-lists-row .source-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+/* Success feedback lives in the large right-hand item panel, not in a second badge. */
+.upgrade-center-column #upgradeStatus{display:none!important}
+/* Flat pointer: a larger, luminous line with clean diamond tips. */
+.upgrade-center-column .wheel-pointer{top:-2px!important;width:3px!important;height:33px!important;border:0!important;border-radius:3px!important;background:linear-gradient(180deg,#fff8dd 0%,#ffe18a 24%,#f1bd52 63%,#b77a20 100%)!important;box-shadow:0 0 5px #ffe7a1,0 0 12px #ffc95caa,0 0 20px #f0b8464d!important;filter:none!important;}
+.upgrade-center-column .wheel-pointer:before{width:7px!important;height:7px!important;top:-2px!important;background:linear-gradient(135deg,#fff4c7,#e3ac3d)!important;box-shadow:0 0 7px #ffe5a0aa!important}
+.upgrade-center-column .wheel-pointer:after{width:5px!important;height:5px!important;bottom:-2px!important;background:linear-gradient(135deg,#ffde88,#b77a20)!important;box-shadow:0 0 5px #f4c66588!important}
+/* Gold remains metallic and readable; no gold halo. */
+.upgrade-center-column .wheel-glow.gold-glow{opacity:0!important;filter:none!important}
+#wheelGlow.gold-sector-hit{display:none!important}
+#upgradeChanceSettingsMenu{z-index:40}
+/* Chance number floats softly into place whenever its value changes. */
+.wheel-label.chance-float{animation:ybChanceFloatIn .58s cubic-bezier(.2,.78,.2,1) both}
+.odds strong.chance-float-small{display:inline-block;animation:ybChanceSmallFloatIn .54s cubic-bezier(.2,.78,.2,1) both}
+@keyframes ybChanceFloatIn{0%{opacity:0;transform:translate(-50%,-50%) translateY(11px) scale(.88);filter:blur(3px)}58%{opacity:1;transform:translate(-50%,-50%) translateY(-2px) scale(1.055);filter:blur(0)}100%{opacity:1;transform:translate(-50%,-50%) translateY(0) scale(1);filter:none}}
+@keyframes ybChanceSmallFloatIn{0%{opacity:0;transform:translateY(9px);filter:blur(2px)}60%{opacity:1;transform:translateY(-2px);filter:blur(0)}100%{opacity:1;transform:translateY(0);filter:none}}
+#wheel.gold-sector-hit{animation:ybGoldMetalFlash .52s ease-out both}
+@keyframes ybGoldMetalFlash{0%{filter:brightness(1) contrast(1)}35%{filter:brightness(1.18) contrast(1.06)}100%{filter:brightness(1) contrast(1)}}
+@media(max-width:1200px){
+ .app:has(#page-upgrade.active) .main{padding:18px 18px 34px!important}
+ .upgrade-hero-row{grid-template-columns:minmax(0,1fr) minmax(280px,310px) minmax(0,1fr)!important;gap:16px!important}
+ .upgrade-lists-row .target-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+ .upgrade-lists-row .source-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
+@media(max-width:760px){
+ .app:has(#page-upgrade.active) .main{padding:12px 10px 28px!important}
+ .upgrade-screen-head{min-height:50px!important;grid-template-columns:minmax(0,1fr) auto!important}
+ .upgrade-screen-head .upgrade-page-title{justify-self:end!important}
+ .upgrade-hero-row{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+ .upgrade-center-column{grid-column:1/-1!important;grid-row:1!important}
+ .upgrade-selected-source{grid-column:1!important;grid-row:2!important}
+ .upgrade-selected-target{grid-column:2!important;grid-row:2!important}
+ .upgrade-selected-source .upgrade-picked,.upgrade-selected-target .upgrade-picked{height:250px!important;min-height:250px!important}
+ .upgrade-lists-row{grid-template-columns:1fr!important}
+ .upgrade-lists-row .target-grid,.upgrade-lists-row .source-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
+@media(prefers-reduced-motion:reduce){.wheel-label.chance-float,.odds strong.chance-float-small,#wheel.gold-sector-hit{animation:none!important}}
+</style>
+
+
+<style id="yarik-battle-v23-polish">
+/* V23 — alternate Yarik-Battle system is primary; keep an explicit switch for the legacy theme. */
+@property --win-start { syntax: "<angle>"; inherits: false; initial-value: 90deg; }
+@property --win-start-soft { syntax: "<angle>"; inherits: false; initial-value: 87.6deg; }
+@property --win-mid { syntax: "<angle>"; inherits: false; initial-value: 180deg; }
+@property --win-end { syntax: "<angle>"; inherits: false; initial-value: 270deg; }
+@property --win-end-soft { syntax: "<angle>"; inherits: false; initial-value: 272.4deg; }
+@property --active-arc-color { syntax: "<color>"; inherits: false; initial-value: #74e2c2; }
+@property --active-arc-edge { syntax: "<color>"; inherits: false; initial-value: #62c7b0; }
+:root { --yb-ease: cubic-bezier(.18,.82,.22,1); }
+/* Cleaner glass header and less boxy navigation. */
+body.yb-design-next .topbar{height:68px!important;background:linear-gradient(180deg,#0b1020f2,#090d18e8)!important;border-bottom:1px solid #27324c!important;box-shadow:0 10px 30px #0006,0 1px #8b7cff17 inset!important}
+body.yb-design-next .top-inner{max-width:1680px!important;gap:clamp(12px,2vw,30px)!important;padding-inline:clamp(14px,2.4vw,34px)!important}
+body.yb-design-next .brand{font-size:21px!important;letter-spacing:-.55px!important;text-transform:none!important}
+body.yb-design-next .nav{gap:5px!important}
+body.yb-design-next .nav button{position:relative;border:1px solid transparent;border-radius:9px!important;padding:10px 13px!important;color:#9ca9c7!important;font-size:12px!important;letter-spacing:.1px!important;transition:background .25s ease,color .25s ease,transform .25s ease,border-color .25s ease!important}
+body.yb-design-next .nav button:hover{background:#171d31!important;color:#eff2ff!important;border-color:#323b5e!important;transform:translateY(-1px)}
+body.yb-design-next .nav button.active{background:linear-gradient(120deg,#8b7cff20,#7ff3d411)!important;border:1px solid #5e5ba33d!important;color:#fff!important;box-shadow:inset 0 -2px #7ff3d4,0 6px 16px #0003!important}
+body.yb-design-next .balance{border-radius:10px!important;padding:8px 12px!important}
+body.yb-design-next .profile{border-radius:11px!important;transition:transform .25s ease,box-shadow .25s ease!important}
+body.yb-design-next .profile:hover{transform:translateY(-2px);box-shadow:0 0 0 3px #7ff3d414,0 8px 18px #0005!important}
+/* The wheel is a sharp, single ring. The inactive 25% is slate blue, not a black cut-out. */
+#page-upgrade .upgrade-center-column .wheel-wrap{overflow:visible!important;isolation:isolate!important;animation:ybWheelRestFloat 5.2s ease-in-out infinite}
+#page-upgrade .upgrade-center-column #wheel{--wheel-fail:#34415a;position:relative!important;background:conic-gradient(from 0deg,var(--wheel-fail) 0deg,var(--wheel-fail) var(--win-start-soft),var(--active-arc-edge) var(--win-start),var(--active-arc-color) var(--win-mid),var(--active-arc-edge) var(--win-end),var(--wheel-fail) var(--win-end-soft),var(--wheel-fail) 360deg)!important;filter:none!important;transition:--win-start .72s cubic-bezier(.18,.82,.22,1),--win-start-soft .72s cubic-bezier(.18,.82,.22,1),--win-end .72s cubic-bezier(.18,.82,.22,1),--win-end-soft .72s cubic-bezier(.18,.82,.22,1),--active-arc-color .48s ease,--active-arc-edge .48s ease,box-shadow .3s ease!important;box-shadow:0 0 0 1px #54627c,0 10px 28px #0008!important;}
+#page-upgrade .upgrade-center-column #wheel.chance-changed{animation:ybArcChanceFloat .72s cubic-bezier(.18,.82,.22,1) both!important}
+#page-upgrade .upgrade-center-column .wheel-glow,#page-upgrade .upgrade-center-column #wheelGlow{display:none!important;filter:none!important;opacity:0!important}
+#page-upgrade .upgrade-center-column #wheel:before{display:none!important;content:none!important}
+#page-upgrade .upgrade-center-column #wheel.gold-sector-visible:before{content:""!important;display:block!important;position:absolute!important;inset:0!important;border:0!important;border-radius:50%!important;pointer-events:none!important;z-index:4!important;background:conic-gradient(from 0deg,transparent 0deg 170deg,#987026 171deg,#d2a83d 174deg,#f7db81 177deg,#fff0b3 180deg,#f7db81 183deg,#d2a83d 186deg,#987026 189deg,transparent 190deg 360deg)!important;mask:radial-gradient(circle closest-side,transparent 0 73%,#000 74% 100%)!important;-webkit-mask:radial-gradient(circle closest-side,transparent 0 73%,#000 74% 100%)!important;}
+.wheel-mark{position:absolute;z-index:12;display:block;color:#c3cde3;font:800 10px/1 Inter,Manrope,sans-serif;letter-spacing:.15px;white-space:nowrap;text-shadow:0 1px 7px #050816,0 0 8px #07101e;pointer-events:none;user-select:none}
+.wheel-mark-top{left:50%;top:-17px;transform:translateX(-50%);color:#f2f5ff;font-size:11px}
+.wheel-mark-left{left:-20px;top:50%;transform:translateY(-50%)}
+.wheel-mark-right{right:-20px;top:50%;transform:translateY(-50%)}
+.wheel-mark-bottom{left:50%;bottom:-14px;transform:translateX(-50%);color:#d8dfef}
+#page-upgrade .upgrade-center-column .wheel-wrap{margin-bottom:18px!important}
+#page-upgrade .upgrade-center-column .wheel-pointer{filter:drop-shadow(0 2px 5px #050816c9)!important}
+/* Make the selected source and target cards identical in size; reserve equal vertical space for their controls. */
+#page-upgrade .upgrade-hero-row{grid-template-columns:minmax(0,1fr) minmax(300px,340px) minmax(0,1fr)!important;gap:clamp(14px,1.8vw,30px)!important;align-items:stretch!important}
+#page-upgrade .upgrade-selected-source,#page-upgrade .upgrade-selected-target{height:440px!important;min-height:440px!important;box-sizing:border-box!important;display:flex!important;flex-direction:column!important;min-width:0!important}
+#page-upgrade .upgrade-selected-source .upgrade-column-head,#page-upgrade .upgrade-selected-target .upgrade-column-head{flex:0 0 auto!important}
+#page-upgrade .upgrade-selected-source .upgrade-picked,#page-upgrade .upgrade-selected-target #upgradeTargetSummary{height:auto!important;min-height:0!important;flex:1 1 0!important;width:100%!important;max-width:none!important;box-sizing:border-box!important}
+#page-upgrade .upgrade-selected-source .upgrade-picked{padding:22px 12px 12px!important}
+#page-upgrade .upgrade-selected-target .upgrade-quick-tools{flex:0 0 28px!important;min-height:28px!important;margin:0 0 8px!important}
+#page-upgrade .upgrade-selected-source .upgrade-cash-boost{flex:0 0 auto!important;margin:12px 0 0!important}
+#page-upgrade .upgrade-selected-target .upgrade-target-settings-row{flex:0 0 auto!important;margin:12px 0 0!important}
+#page-upgrade .upgrade-target-settings-row .multiplier-grid{gap:6px!important}
+#page-upgrade .upgrade-target-settings-row .multiplier-chip{padding:9px 4px!important;border-radius:8px!important}
+#page-upgrade .upgrade-target-settings-row .multiplier-chip strong{font-size:12px!important}
+#page-upgrade .upgrade-target-settings-row .multiplier-chip span{font-size:8px!important}
+/* Remove the broken chance gear and all of its old popup styles. Default multiplier odds remain intact. */
+#upgradeChanceSettingsToggle,#upgradeChanceSettingsMenu,.chance-settings-toggle,.chance-settings-menu{display:none!important;visibility:hidden!important;pointer-events:none!important}
+/* Smooth, readable interactions across every section. */
+button:not(:disabled){-webkit-tap-highlight-color:transparent}
+button:not(:disabled):active{transform:translateY(1px) scale(.985)!important}
+body.yb-design-next .case-tile,body.yb-design-next .major-case-tile,body.yb-design-next .firm-case-tile,body.yb-design-next .catalog-card,body.yb-design-next .inv-card,body.yb-design-next .upgrade-item-card,body.yb-design-next .yb-event-case,body.yb-design-next .yb-news-card{transition:transform .28s var(--yb-ease),border-color .28s ease,background .28s ease,box-shadow .28s ease!important}
+body.yb-design-next .case-tile:hover,body.yb-design-next .major-case-tile:hover,body.yb-design-next .firm-case-tile:hover,body.yb-design-next .upgrade-item-card:hover{transform:translateY(-3px)!important}
+body.yb-design-next .upgrade-picked,body.yb-design-next #upgradeTargetSummary{transition:background .35s ease,border-color .35s ease,box-shadow .35s ease!important}
+body.yb-design-next .upgrade-selected-target #upgradeTargetSummary.upgrade-result-item-in{animation:ybRightResultInV23 .55s cubic-bezier(.18,.82,.22,1) both!important}
+body.yb-design-next .modal-overlay.show .profile-modal,body.yb-design-next .modal-overlay.show .topup-modal{animation:ybModalSlideV23 .3s cubic-bezier(.18,.82,.22,1) both}
+@keyframes ybWheelRestFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes ybArcChanceFloat{0%{transform:scale(.955) translateY(3px);filter:brightness(.95)}38%{transform:scale(1.018) translateY(-2px);filter:brightness(1.12)}100%{transform:scale(1) translateY(0);filter:none}}
+@keyframes ybRightResultInV23{0%{opacity:.4;transform:translateY(8px) scale(.985)}65%{opacity:1;transform:translateY(-2px) scale(1.006)}100%{opacity:1;transform:none}}
+@keyframes ybModalSlideV23{0%{opacity:0;transform:translateY(13px) scale(.975)}100%{opacity:1;transform:translateY(0) scale(1)}}
+/* New themed cases are temporarily hidden; keep the daily tasks and other home content. */
+#page-cases #ybPlayground .yb-event-column{display:none!important}
+#page-cases #ybPlayground .yb-playground-grid{grid-template-columns:minmax(0,1fr)!important}
+#page-cases #ybPlayground .yb-mission-panel{display:block!important;width:100%!important}
+#page-cases #ybPlayground .yb-playground-title{margin-bottom:13px!important}
+@media(max-width:1020px){#page-upgrade .upgrade-hero-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:12px!important}#page-upgrade .upgrade-center-column{grid-column:1/-1!important;grid-row:1!important;min-height:0!important}#page-upgrade .upgrade-selected-source{grid-column:1!important;grid-row:2!important;height:420px!important;min-height:420px!important}#page-upgrade .upgrade-selected-target{grid-column:2!important;grid-row:2!important;height:420px!important;min-height:420px!important}#page-upgrade .upgrade-selected-source .upgrade-picked,#page-upgrade .upgrade-selected-target #upgradeTargetSummary{min-height:0!important}}
+@media(max-width:620px){#page-upgrade .upgrade-hero-row{grid-template-columns:minmax(0,1fr)!important}#page-upgrade .upgrade-center-column{grid-column:1!important;grid-row:1!important}#page-upgrade .upgrade-selected-source{grid-column:1!important;grid-row:2!important;height:auto!important;min-height:0!important}#page-upgrade .upgrade-selected-target{grid-column:1!important;grid-row:3!important;height:auto!important;min-height:0!important}#page-upgrade .upgrade-selected-source .upgrade-picked,#page-upgrade .upgrade-selected-target #upgradeTargetSummary{height:260px!important;min-height:260px!important;flex:0 0 260px!important}#page-upgrade .wheel-mark{font-size:9px}#page-upgrade .wheel-mark-left{left:-16px}#page-upgrade .wheel-mark-right{right:-16px}}
+@media(prefers-reduced-motion:reduce){#page-upgrade .upgrade-center-column .wheel-wrap,#page-upgrade .upgrade-center-column #wheel.chance-changed,body.yb-design-next .modal-overlay.show .profile-modal,body.yb-design-next .modal-overlay.show .topup-modal{animation:none!important}*{scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+
+
+<style id="yarik-battle-v24-final">
+/* Clean probability ring: no radial mask on the whole wheel, so no accidental dark wedge at 75%. */
+#page-upgrade .upgrade-center-column #wheel{
+  --wheel-fail:#465571!important;
+  --wheel-center:#101525;
+  mask:none!important;-webkit-mask:none!important;
+  background-color:var(--wheel-fail)!important;
+  background-image:
+    radial-gradient(circle closest-side at 50% 50%,var(--wheel-center) 0 72.4%,transparent 73.2%),
+    conic-gradient(from 0deg,var(--wheel-fail) 0deg,var(--wheel-fail) var(--win-start-soft),var(--active-arc-edge) var(--win-start),var(--active-arc-color) var(--win-mid),var(--active-arc-edge) var(--win-end),var(--wheel-fail) var(--win-end-soft),var(--wheel-fail) 360deg)!important;
+  transition:--win-start .88s cubic-bezier(.18,.82,.22,1),--win-start-soft .88s cubic-bezier(.18,.82,.22,1),--win-end .88s cubic-bezier(.18,.82,.22,1),--win-end-soft .88s cubic-bezier(.18,.82,.22,1),--active-arc-color .62s ease,--active-arc-edge .62s ease,box-shadow .3s ease!important;
+  filter:none!important;
+}
+body.yb-design-next #page-upgrade .upgrade-center-column #wheel{--wheel-center:#101525!important;--wheel-fail:#465571!important;}
+body:not(.yb-design-next) #page-upgrade .upgrade-center-column #wheel{--wheel-center:#191b20!important;--wheel-fail:#484b54!important;}
+#page-upgrade .upgrade-center-column #wheel::after{display:none!important;content:none!important}
+#page-upgrade .upgrade-center-column #wheel::before{display:none!important;content:none!important}
+#page-upgrade .upgrade-center-column #wheel.chance-changed{animation:ybArcChanceFloatV24 .82s cubic-bezier(.18,.82,.22,1) both!important}
+@keyframes ybArcChanceFloatV24{0%{transform:scale(.975) translateY(2px);filter:brightness(.94)}35%{transform:scale(1.018) translateY(-2px);filter:brightness(1.13)}70%{transform:scale(.998) translateY(1px);filter:brightness(1.04)}100%{transform:scale(1);filter:none}}
+/* Equal left and right skin panels at all desktop widths. */
+#page-upgrade .upgrade-selected-source .upgrade-picked,
+#page-upgrade .upgrade-selected-target #upgradeTargetSummary{height:355px!important;min-height:355px!important;max-height:355px!important;flex:0 0 355px!important;box-sizing:border-box!important;overflow:hidden!important}
+#page-upgrade .upgrade-selected-source .upgrade-picked>div,
+#page-upgrade .upgrade-selected-target #upgradeTargetSummary>div{min-width:0;max-width:100%;overflow-wrap:anywhere}
+@media(max-width:1020px){#page-upgrade .upgrade-selected-source .upgrade-picked,#page-upgrade .upgrade-selected-target #upgradeTargetSummary{height:300px!important;min-height:300px!important;max-height:300px!important;flex-basis:300px!important}}
+@media(max-width:620px){#page-upgrade .upgrade-selected-source .upgrade-picked,#page-upgrade .upgrade-selected-target #upgradeTargetSummary{height:260px!important;min-height:260px!important;max-height:260px!important;flex-basis:260px!important}}
+/* Refined navigation and action buttons for the Yarik-Battle theme. */
+body.yb-design-next .topbar{background:linear-gradient(180deg,#0d1224f5,#090d18f1)!important;border-bottom:1px solid #2b3652!important;box-shadow:0 8px 28px #0005,0 1px #9b94ff10 inset!important;backdrop-filter:blur(18px)}
+body.yb-design-next .top-inner{gap:clamp(10px,1.4vw,22px)!important}
+body.yb-design-next .nav button{font-size:12px!important;font-weight:800!important;border-radius:10px!important;padding:10px clamp(9px,1vw,15px)!important;letter-spacing:.15px!important}
+body.yb-design-next .nav button.active{box-shadow:inset 0 -2px #7ff3d4,0 6px 18px #06091666!important}
+body.yb-design-next .topup-open{border:1px solid #8c85fa!important;background:linear-gradient(115deg,#7567ec,#675ccf 52%,#50bfae)!important;color:#080c17!important;box-shadow:0 5px 18px #7770ef24!important;transition:transform .22s ease,box-shadow .22s ease,filter .22s ease!important}
+body.yb-design-next .topup-open:hover{transform:translateY(-2px)!important;filter:brightness(1.08);box-shadow:0 9px 24px #7770ef38!important}
+body.yb-design-next .header-notify,body.yb-design-next .profile{transition:transform .22s ease,border-color .22s ease,background .22s ease!important}
+body.yb-design-next .header-notify:hover,body.yb-design-next .profile:hover{transform:translateY(-2px)!important;border-color:#7ff3d480!important}
+body.yb-design-next button,body.yb-design-next .case-tile,body.yb-design-next .major-case-tile,body.yb-design-next .firm-case-tile,body.yb-design-next .catalog-card,body.yb-design-next .upgrade-item-card{transition-timing-function:cubic-bezier(.18,.82,.22,1)!important}
+#page-cases #ybPlayground .yb-event-column{display:none!important}
+#page-cases #ybPlayground .yb-playground-grid{grid-template-columns:minmax(0,1fr)!important}
+#page-cases #ybPlayground .yb-mission-panel{display:block!important;width:100%!important}
+@media(prefers-reduced-motion:reduce){#page-upgrade .upgrade-center-column #wheel.chance-changed{animation:none!important}}
+</style>
+
+
+<style id="yarik-battle-v25-final">
+@property --win-start-soft{syntax:"<angle>";inherits:false;initial-value:88deg}
+@property --win-start{syntax:"<angle>";inherits:false;initial-value:90deg}
+@property --win-mid{syntax:"<angle>";inherits:false;initial-value:180deg}
+@property --win-end{syntax:"<angle>";inherits:false;initial-value:270deg}
+@property --win-end-soft{syntax:"<angle>";inherits:false;initial-value:272deg}
+@property --active-arc-color{syntax:"<color>";inherits:false;initial-value:#74e2c2}
+@property --active-arc-edge{syntax:"<color>";inherits:false;initial-value:#62c7b0}
+#page-upgrade .upgrade-center-column #wheel{--wheel-fail:#465571!important;filter:none!important;box-shadow:0 0 0 1px #99b9f42a,0 0 24px #202e4a22!important}
+body:not(.yb-design-next) #page-upgrade .upgrade-center-column #wheel{--wheel-fail:#484b54!important}
+#page-upgrade .upgrade-center-column .wheel-pointer{filter:drop-shadow(0 0 3px #d7e6ffb8) drop-shadow(0 0 7px #8798ff66)!important;transform:scale(1.09)!important}
+#page-upgrade .upgrade-selected-source .upgrade-picked,#page-upgrade .upgrade-selected-target #upgradeTargetSummary{height:355px!important;min-height:355px!important;max-height:355px!important;flex:0 0 355px!important}
+#page-upgrade .upgrade-selected-source,#page-upgrade .upgrade-selected-target{height:440px!important;min-height:440px!important}
+#page-skins .toolbar{gap:10px}
+#refreshPricesButton{white-space:nowrap;min-height:39px;font-size:11px;font-weight:850;letter-spacing:.3px}
+body.yb-design-next #page-skins #refreshPricesButton{background:linear-gradient(110deg,#29264c,#173d43)!important;border-color:#4c7390!important;color:#eafaf9!important}
+#catalogCount{overflow-wrap:anywhere;line-height:1.65}
+#page-upgrade .upgrade-center-column #wheel.chance-changed{animation:ybArcChanceFloatV25 .88s cubic-bezier(.18,.82,.22,1) both!important}
+@keyframes ybArcChanceFloatV25{0%{transform:scale(.98) translateY(2px);filter:brightness(.95)}34%{transform:scale(1.018) translateY(-2px);filter:brightness(1.12)}68%{transform:scale(.997) translateY(1px);filter:brightness(1.03)}100%{transform:scale(1);filter:none}}
+@media(max-width:760px){#page-skins .toolbar{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}#page-skins .toolbar .searchbox{grid-column:1/-1}#refreshPricesButton{grid-column:1/-1}}
+</style>
+
+
+<style id="yarik-battle-v25-finishing">
+/* Final readability and motion pass — keep the UI fast even while the price feed rerenders. */
+body.yb-design-next .nav button,body.yb-design-next .header-notify,body.yb-design-next .profile,body.yb-design-next .btn,body.yb-design-next .icon-tool,body.yb-design-next .multiplier-chip{transition:color .22s ease,background .25s ease,border-color .25s ease,box-shadow .25s ease,transform .24s cubic-bezier(.18,.82,.22,1),filter .24s ease!important}
+body.yb-design-next .content-box,body.yb-design-next .promo,body.yb-design-next .upgrade-side,body.yb-design-next .case-detail{transition:background .32s ease,border-color .32s ease,box-shadow .32s ease!important}
+#page-upgrade .upgrade-center-column #wheel{--wheel-fail:#55627c!important}
+body:not(.yb-design-next) #page-upgrade .upgrade-center-column #wheel{--wheel-fail:#555862!important}
+#page-upgrade .wheel-mark{font-size:12px!important;letter-spacing:.1px!important}
+#page-upgrade .wheel-mark-top{top:-19px!important}
+#page-upgrade .wheel-mark-left{left:-22px!important}
+#page-upgrade .wheel-mark-right{right:-22px!important}
+#page-upgrade .wheel-mark-bottom{bottom:-16px!important}
+#page-upgrade .upgrade-selected-source .upgrade-picked,#page-upgrade .upgrade-selected-target #upgradeTargetSummary{height:355px!important;min-height:355px!important;max-height:355px!important;flex:0 0 355px!important}
+@media(prefers-reduced-motion:reduce){body.yb-design-next .nav button,body.yb-design-next .header-notify,body.yb-design-next .profile,body.yb-design-next .btn,body.yb-design-next .icon-tool,body.yb-design-next .multiplier-chip{transition:none!important}}
+</style>
+
 </head>
 <body><div class="app">
 <header class="topbar"><div class="top-inner"><a class="brand" href="#" onclick="showPage('cases');return false"><span class="brandmark"></span><span>YARIK<em>-BATTLE</em></span></a><div class="header-metrics" aria-label="Статистика Yarik-Battle"><div><small>ПРОЕКТ</small><strong>YB</strong></div><div><small>АПГРЕЙДОВ</small><strong id="headerUpgradeCount">0</strong></div><div><small>КЕЙСОВ ОТКРЫТО</small><strong id="headerCaseCount">0</strong></div></div><nav class="nav"><button class="active" data-page="cases" onclick="showPage('cases')">КЕЙСЫ</button><button data-page="inventory" onclick="showPage('inventory')">ИНВЕНТАРЬ</button><button data-page="upgrade" onclick="showPage('upgrade')">АПГРЕЙД</button><button data-page="skins" onclick="showPage('skins')">СКИНЫ</button></nav><div class="top-right"><div class="balance"><span class="coin">₽</span><div><small>ВАШ БАЛАНС</small><span id="balanceText">0.00 ₽</span></div></div><button class="btn btn-primary topup-open" onclick="openTopup()">＋ ПОПОЛНИТЬ</button><button type="button" class="header-notify" onclick="toast('Новых уведомлений нет')" aria-label="Уведомления" title="Уведомления"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg></button><button type="button" class="profile" onclick="handleProfileButton()" title="Профиль · двойное нажатие U — админ-панель" aria-label="Профиль"><img id="headerAvatar" alt="" hidden><span id="headerAvatarFallback">U</span></button></div></div></header>
@@ -637,9 +854,18 @@ button,input,select,textarea{font:inherit}button{transition:transform .22s ease,
 <div class="section-head major-pack-head"><h2>МАЖОР</h2><p>Пять премиальных кейсов</p><div class="right">50 000 — 500 000 ₽</div></div>
 <div id="majorCaseGrid" class="case-grid major-case-grid"><div class="empty">Готовим кейсы Мажор…</div></div>
 
-<div class="section-head firm-head"><h2>ФИРМЕННЫЕ КЕЙСЫ</h2><div class="right">5 КЕЙСОВ</div></div>
-<div id="firmCaseGrid" class="case-grid firm-case-grid"></div>
 <div class="section-head news-head"><h2>НОВОСТИ YARIK-BATTLE</h2><div class="right">ОБНОВЛЕНИЯ ПРОЕКТА</div></div><div id="yarikNewsGrid" class="yb-news-grid"></div>
+<div class="yb-playground" id="ybPlayground">
+ <div class="section-head yb-playground-title"><h2>СОБЫТИЯ И ЗАДАНИЯ</h2><div class="right"><span class="yb-live-pill"><i></i> СЕГОДНЯ</span></div></div>
+ <div class="yb-playground-grid">
+  <aside class="yb-mission-panel">
+   <div class="yb-mission-panel-head"><div><span class="yb-kicker">PLAYER QUESTS</span><h3>ЗАДАНИЯ НА СЕГОДНЯ</h3></div><span class="yb-mission-emblem">✦</span></div>
+   <div class="yb-daily-reward"><div class="yb-daily-icon">✧</div><div><strong>Ежедневный бонус</strong><small>Раз в день · 250 ₽ на баланс</small></div><button id="ybDailyBonusButton" type="button" onclick="claimYbDailyBonus()">ЗАБРАТЬ</button></div>
+   <div id="ybMissionList" class="yb-mission-list"><div class="yb-mission-placeholder">Подготавливаем задания…</div></div>
+   <div class="yb-mission-foot"><span>Награды за задания начисляются на баланс сайта.</span><button type="button" onclick="showPage('inventory')">МОЙ ИНВЕНТАРЬ ↗</button></div>
+  </aside>
+ </div>
+</div>
 <div class="feature-row"><div class="info-panel"><h3>ТВОЯ СТАТИСТИКА</h3><div class="stat-row"><div class="stat"><label>ОТКРЫТО КЕЙСОВ</label><strong id="statOpened">0</strong></div><div class="stat"><label>ПРЕДМЕТОВ</label><strong id="statItems">0</strong></div><div class="stat"><label>СУММА ИНВЕНТАРЯ</label><strong class="gold" id="statValue">0 ₽</strong></div></div></div></div>
 </section>
 <section id="page-open" class="page"><div class="page-title"><div><h1 id="casePageTitle">KILOWATT CASE</h1><p id="casePageSub">ОРИГИНАЛЬНЫЙ КЕЙС CS2 · БЕЗ КЛЮЧА</p></div><div class="right"><button class="btn btn-secondary" onclick="showPage('cases')">← К СПИСКУ КЕЙСОВ</button></div></div><div class="case-detail"><div class="case-detail-top"><div class="case-display"><img id="detailCaseImg" alt="Кейс"></div><div class="case-meta"><div class="eyebrow">CS2 MARKET CASE</div><h2 id="detailCaseName">Kilowatt Case</h2><div class="open-price"><strong id="caseOpenPrice">— ₽</strong><button id="openButton" class="btn btn-primary" onclick="openRoulette()">ОТКРЫТЬ КЕЙС</button></div><div class="notice" id="casePriceNote">Цена кейса без ключа</div></div></div><div class="roulette-wrap"><div class="batch-controls" id="batchControls"><div class="quantity-control"><label>КЕЙСОВ ЗА РАЗ</label><div id="openQtyButtons" class="qty-button-row" aria-label="Количество кейсов"></div><input class="hidden-state" id="openCount" type="number" min="1" max="10" value="1" step="1" aria-hidden="true" tabindex="-1"><span>Доступно по балансу: <strong id="maxOpenCount">0</strong></span></div><div class="case-speed-control"><span>СКОРОСТЬ</span><button type="button" class="speed-chip" data-case-speed="fast" onclick="setCaseSpeed('fast')">БЫСТРО</button><button type="button" class="speed-chip active" data-case-speed="slow" onclick="setCaseSpeed('slow')">МЕДЛЕННО</button></div><div class="batch-cost"><span>ИТОГО</span><strong id="batchTotal">—</strong></div></div><div class="roulette-top"><span>РУЛЕТКА ПРЕДМЕТОВ</span><span id="rouletteStatus">ГОТОВ К ОТКРЫТИЮ</span></div><div id="rouletteRows" class="roulette-rows"></div><div class="roulette-actions"><button class="btn btn-primary" id="openButton2" onclick="openRoulette()">ОТКРЫТЬ КЕЙС</button><button class="btn btn-secondary" onclick="renderCaseContents();document.getElementById('caseContents').scrollIntoView({behavior:'smooth'})">СОДЕРЖИМОЕ КЕЙСА</button></div><div id="resultBox" class="result-box"><img id="resultImg" alt="Выпавший предмет"><div class="result-main"><strong id="resultName"></strong><span id="resultRarity"></span></div><div id="resultPrice" class="result-price"></div><button class="btn btn-secondary" onclick="showPage('inventory')">В ИНВЕНТАРЬ</button><div id="batchResults" class="batch-results"></div></div></div></div><div id="caseContents" class="section-head"><h2>СОДЕРЖИМОЕ КЕЙСА</h2><p>Реальные изображения предметов из каталога CS2</p></div><div id="caseContentGrid" class="item-grid"><div class="empty">Загружаем список предметов…</div></div></section>
@@ -658,19 +884,6 @@ button,input,select,textarea{font:inherit}button{transition:transform .22s ease,
     <div class="upgrade-cash-boost"><div class="upgrade-cash-head"><label for="upgradeCashStakeInput">ДОБАВИТЬ БАЛАНС</label><span class="cash-selected"><strong id="upgradeCashStakeLabel">0 ₽</strong><small>из <b id="upgradeCashAvailable">0.00 ₽</b></small></span></div><div class="upgrade-cash-row slider-row"><input id="upgradeCashStakeInput" type="range" min="0" max="0" step="10" value="0" oninput="setUpgradeCashStake(this.value)" aria-label="Добавить баланс к ставке"></div><div class="slider-scale"><span>0 ₽</span><span>Шанс максимум 75%</span></div></div>
    </aside>
    <div class="upgrade-side upgrade-center-column">
-    <div class="wheel-heading-row"><div class="wheel-title">ШАНС</div><button type="button" id="upgradeChanceSettingsToggle" class="chance-settings-toggle" onclick="toggleUpgradeChanceSettings(event)" aria-label="Настроить шансы" title="Настройки шансов">⚙</button></div>
-    <div id="upgradeChanceSettingsMenu" class="chance-settings-menu hidden-state" role="dialog" aria-label="Настройки шансов">
-     <div class="chance-settings-menu-head"><div><strong>НАСТРОЙКА ШАНСОВ</strong><small>Базовые проценты для множителей</small></div><button type="button" onclick="toggleUpgradeChanceSettings(event,false)" aria-label="Закрыть">×</button></div>
-     <div class="chance-settings-grid">
-      <label><span>1.5×</span><div><input id="upgradeChance15" type="number" min="0.01" max="75" step="0.01" value="75" oninput="setUpgradeBaseChance(1.5,this.value)" onblur="syncUpgradeChanceSettingsUI()"><b>%</b></div></label>
-      <label><span>2×</span><div><input id="upgradeChance2" type="number" min="0.01" max="75" step="0.01" value="50" oninput="setUpgradeBaseChance(2,this.value)" onblur="syncUpgradeChanceSettingsUI()"><b>%</b></div></label>
-      <label><span>3×</span><div><input id="upgradeChance3" type="number" min="0.01" max="75" step="0.01" value="30" oninput="setUpgradeBaseChance(3,this.value)" onblur="syncUpgradeChanceSettingsUI()"><b>%</b></div></label>
-      <label><span>5×</span><div><input id="upgradeChance5" type="number" min="0.01" max="75" step="0.01" value="20" oninput="setUpgradeBaseChance(5,this.value)" onblur="syncUpgradeChanceSettingsUI()"><b>%</b></div></label>
-      <label><span>10×</span><div><input id="upgradeChance10" type="number" min="0.01" max="75" step="0.01" value="10" oninput="setUpgradeBaseChance(10,this.value)" onblur="syncUpgradeChanceSettingsUI()"><b>%</b></div></label>
-     </div>
-     <p class="chance-settings-note">Итоговый шанс дополнительно пересчитывается по цене выбранных скинов и не может превышать 75%.</p>
-     <button type="button" class="chance-reset-btn" onclick="resetUpgradeBaseChances()">СБРОСИТЬ К ИСХОДНЫМ</button>
-    </div>
     <div class="multiplier-grid">
      <button type="button" class="multiplier-chip" data-mul="1.5" onclick="setUpgradeMultiplier(1.5)"><strong>1.5×</strong><span id="multiplierBase15">75% база</span></button>
      <button type="button" class="multiplier-chip active" data-mul="2" onclick="setUpgradeMultiplier(2)"><strong>2×</strong><span id="multiplierBase2">50% база</span></button>
@@ -678,7 +891,7 @@ button,input,select,textarea{font:inherit}button{transition:transform .22s ease,
      <button type="button" class="multiplier-chip" data-mul="5" onclick="setUpgradeMultiplier(5)"><strong>5×</strong><span id="multiplierBase5">20% база</span></button>
      <button type="button" class="multiplier-chip" data-mul="10" onclick="setUpgradeMultiplier(10)"><strong>10×</strong><span id="multiplierBase10">10% база</span></button>
     </div>
-    <div class="wheel-wrap"><div id="wheelGlow" class="wheel-glow" aria-hidden="true"></div><div id="wheel" class="wheel"></div><div class="wheel-pointer-rotor" id="wheelRotor"><div class="wheel-pointer"></div></div><div class="wheel-label" id="wheelCenter">50%</div><div class="wheel-subtitle" id="wheelSubtitle">ШАНС НА УСПЕХ</div><div class="wheel-cylinder-preview" id="wheelCylinderPreview" aria-live="polite"><img id="wheelCylinderImage" alt="Цель апгрейда"><div><small>ПРИ УСПЕХЕ</small><strong id="wheelCylinderName">Выбери цель</strong><span id="wheelCylinderPrice">—</span></div></div></div>
+    <div class="wheel-wrap"><span class="wheel-mark wheel-mark-top" aria-hidden="true">100%</span><span class="wheel-mark wheel-mark-left" aria-hidden="true">50%</span><span class="wheel-mark wheel-mark-right" aria-hidden="true">50%</span><span class="wheel-mark wheel-mark-bottom" aria-hidden="true">0%</span><div id="wheelGlow" class="wheel-glow" aria-hidden="true"></div><div id="wheel" class="wheel"></div><div class="wheel-pointer-rotor" id="wheelRotor"><div class="wheel-pointer"></div></div><div class="wheel-label" id="wheelCenter">50%</div><div class="wheel-subtitle" id="wheelSubtitle">ШАНС НА УСПЕХ</div><div class="wheel-cylinder-preview" id="wheelCylinderPreview" aria-live="polite"><img id="wheelCylinderImage" alt="Цель апгрейда"><div><small>ПРИ УСПЕХЕ</small><strong id="wheelCylinderName">Выбери цель</strong><span id="wheelCylinderPrice">—</span></div></div></div>
     <div class="wheel-legend"><span><i class="legend-success"></i> УСПЕХ</span><span><i class="legend-fail"></i> НЕУДАЧА</span></div>
     <div id="goldBonusBanner" class="gold-bonus-banner hidden-state">ЗОЛОТОЙ БОНУС · 5% · серия ×2</div>
     <div class="upgrade-speed-state" id="upgradeSpeedState">ϟ Быстрая прокрутка</div>
@@ -700,9 +913,11 @@ button,input,select,textarea{font:inherit}button{transition:transform .22s ease,
   </div>
  </div>
  
-</section><section id="page-skins" class="page"><div class="page-title"><div><h1>КАТАЛОГ ПРЕДМЕТОВ</h1><p id="catalogCount">Скины и предметы CS2</p></div></div><div class="content-box"><div class="catalog-tabs" role="tablist" aria-label="Категории предметов"><button class="active" type="button" data-catalog="skins" onclick="setCatalogCategory('skins')">Скины</button><button type="button" data-catalog="stickers" onclick="setCatalogCategory('stickers')">Наклейки</button><button type="button" data-catalog="charms" onclick="setCatalogCategory('charms')">Брелоки</button><button type="button" data-catalog="music" onclick="setCatalogCategory('music')">Музыка</button><button type="button" data-catalog="agents" onclick="setCatalogCategory('agents')">Агенты</button><button type="button" data-catalog="patches" onclick="setCatalogCategory('patches')">Нашивки</button></div><div class="toolbar"><div class="searchbox"><input id="skinSearch" placeholder="Найти предмет…" oninput="renderCatalog(true)"></div><select id="skinRarity" class="filter-select" onchange="renderCatalog(true)"><option value="all">Все редкости</option><option value="consumer">Consumer / базовый</option><option value="industrial">Industrial</option><option value="mil-spec">Mil-Spec</option><option value="restricted">Restricted</option><option value="classified">Classified</option><option value="covert">Covert</option><option value="extraordinary">Extraordinary</option></select><select id="skinSort" class="filter-select" onchange="renderCatalog(true)"><option value="popular">По редкости</option><option value="high">Дороже</option><option value="low">Дешевле</option><option value="az">По названию</option></select></div><div id="skinGrid" class="item-grid"><div class="empty"><b>Загружаем каталог CS2</b>Подключаем список предметов и оригинальные изображения…<div class="loading-line"><span></span></div></div></div><div class="loadmore"><button id="loadMore" class="btn btn-secondary" onclick="loadMoreSkins()">ПОКАЗАТЬ ЕЩЁ</button></div></div></section>
+</section><section id="page-skins" class="page"><div class="page-title"><div><h1>КАТАЛОГ ПРЕДМЕТОВ</h1><p id="catalogCount">Скины и предметы CS2</p></div></div><div class="content-box"><div class="catalog-tabs" role="tablist" aria-label="Категории предметов"><button class="active" type="button" data-catalog="skins" onclick="setCatalogCategory('skins')">Скины</button><button type="button" data-catalog="stickers" onclick="setCatalogCategory('stickers')">Наклейки</button><button type="button" data-catalog="charms" onclick="setCatalogCategory('charms')">Брелоки</button><button type="button" data-catalog="music" onclick="setCatalogCategory('music')">Музыка</button><button type="button" data-catalog="agents" onclick="setCatalogCategory('agents')">Агенты</button><button type="button" data-catalog="patches" onclick="setCatalogCategory('patches')">Нашивки</button></div><div class="toolbar"><div class="searchbox"><input id="skinSearch" placeholder="Найти предмет…" oninput="renderCatalog(true)"></div><select id="skinRarity" class="filter-select" onchange="renderCatalog(true)"><option value="all">Все редкости</option><option value="consumer">Consumer / базовый</option><option value="industrial">Industrial</option><option value="mil-spec">Mil-Spec</option><option value="restricted">Restricted</option><option value="classified">Classified</option><option value="covert">Covert</option><option value="extraordinary">Extraordinary</option></select><select id="skinSort" class="filter-select" onchange="renderCatalog(true)"><option value="popular">По редкости</option><option value="high">Дороже</option><option value="low">Дешевле</option><option value="az">По названию</option></select><button id="refreshPricesButton" type="button" class="btn btn-secondary" onclick="refreshMarketPrices()">ОБНОВИТЬ ЦЕНЫ</button></div><div id="skinGrid" class="item-grid"><div class="empty"><b>Загружаем каталог CS2</b>Подключаем список предметов и оригинальные изображения…<div class="loading-line"><span></span></div></div></div><div class="loadmore"><button id="loadMore" class="btn btn-secondary" onclick="loadMoreSkins()">ПОКАЗАТЬ ЕЩЁ</button></div></div></section>
 <footer class="footer">YARIK-BATTLE · YARIK-BATTLE · НЕ СВЯЗАНА С VALVE И STEAM · КЕЙСЫ · ПРЕДМЕТЫ · АПГРЕЙДЫ</footer></main></div><div id="topupModal" class="modal-overlay" onclick="if(event.target===this)closeTopup()"><div class="topup-modal" role="dialog" aria-modal="true" aria-labelledby="topupTitle"><button class="modal-close" onclick="closeTopup()" aria-label="Закрыть">×</button><div class="eyebrow">YARIK-BATTLE WALLET</div><h2 id="topupTitle">ПОПОЛНИТЬ БАЛАНС</h2><p class="topup-copy">Выбери сумму для баланса.</p><div class="topup-options"><button class="topup-option" onclick="addDemoFunds(100)"><span>＋</span><strong>100 ₽</strong></button><button class="topup-option" onclick="addDemoFunds(500)"><span>＋</span><strong>500 ₽</strong></button><button class="topup-option" onclick="addDemoFunds(1000)"><span>＋</span><strong>1 000 ₽</strong></button></div><div class="custom-topup"><label for="customTopupAmount">СВОЯ СУММА · ДО 1 000 000 ₽</label><div class="custom-topup-row"><input id="customTopupAmount" type="number" inputmode="numeric" min="1" max="1000000" step="1" placeholder="Например, 25000"><button class="btn btn-primary" onclick="addCustomDemoFunds()">ПОПОЛНИТЬ</button></div><small>Выбери сумму и подтверди действие.</small></div><div class="topup-current">ТЕКУЩИЙ БАЛАНС <strong id="topupCurrentBalance">0.00 ₽</strong></div><div class="topup-disclaimer">Пополнение баланса — ничего не списывается с карты.</div></div></div>
-<div id="profileModal" class="modal-overlay profile-overlay" onclick="handleProfileBackdropClick(event)"><div class="profile-modal" role="dialog" aria-modal="true" aria-labelledby="profileTitle"><button class="modal-close" onclick="closeProfile()" aria-label="Закрыть">×</button><div class="eyebrow">YARIK-BATTLE · PLAYER PROFILE</div><div class="profile-userbar"><button type="button" class="profile-avatar-pick" onclick="document.getElementById('profileAvatarFile').click()" aria-label="Изменить фото профиля"><img id="profileAvatarPreview" alt="Аватар профиля" src=""><span>Изменить фото</span></button><input id="profileAvatarFile" type="file" accept="image/*" hidden onchange="setProfileAvatar(this.files&&this.files[0])"><div class="profile-user-meta"><strong>ИГРОК YARIK-BATTLE</strong><small>Профиль и история</small></div></div><h2 id="profileTitle">ПРОФИЛЬ И СТАТИСТИКА</h2><div class="profile-stat-grid"><div class="profile-stat"><span>КЕЙСОВ ОТКРЫТО</span><strong id="profileCases">0</strong></div><div class="profile-stat"><span>АПГРЕЙДОВ</span><strong id="profileUpgrades">0</strong></div><div class="profile-stat"><span>СКИНОВ В ИНВЕНТАРЕ</span><strong id="profileItems">0</strong></div><div class="profile-stat"><span>ПРОДАНО</span><strong id="profileSold">0</strong></div></div><div class="profile-history-head"><h3>ИСТОРИЯ ПРЕДМЕТОВ</h3><span>последние действия</span></div><div id="profileHistory" class="profile-history"><div class="empty">История пока пуста.</div></div><div class="history-pagination profile-history-pager"><button type="button" onclick="changeHistoryPage(-1,'profile')" aria-label="Предыдущая страница истории">‹</button><span id="profileHistoryPage">1 / 1</span><button type="button" onclick="changeHistoryPage(1,'profile')" aria-label="Следующая страница истории">›</button></div><div class="profile-footer-hint">U — профиль · двойное нажатие — админ-панель.</div></div></div>
+<div id="profileModal" class="modal-overlay profile-overlay" onclick="handleProfileBackdropClick(event)"><div class="profile-modal" role="dialog" aria-modal="true" aria-labelledby="profileTitle"><button class="modal-close" onclick="closeProfile()" aria-label="Закрыть">×</button><div class="eyebrow">YARIK-BATTLE · PLAYER PROFILE</div><div class="profile-userbar"><button type="button" class="profile-avatar-pick" onclick="document.getElementById('profileAvatarFile').click()" aria-label="Изменить фото профиля"><img id="profileAvatarPreview" alt="Аватар профиля" src=""><span>Изменить фото</span></button><input id="profileAvatarFile" type="file" accept="image/*" hidden onchange="setProfileAvatar(this.files&&this.files[0])"><div class="profile-user-meta"><strong>ИГРОК YARIK-BATTLE</strong><small>Профиль и история</small></div></div>
+<div class="profile-design-setting"><div class="profile-design-copy"><strong>СТАРЫЙ ДИЗАЙН</strong><small>Включи галочку, чтобы вернуть прежнее оформление</small></div><label class="yb-switch" for="ybDesignModeToggle"><input id="ybDesignModeToggle" type="checkbox" onchange="setYbDesignMode(this.checked)"><span class="yb-switch-track"><i></i></span><span class="yb-switch-label">Выключен</span></label></div>
+<h2 id="profileTitle">ПРОФИЛЬ И СТАТИСТИКА</h2><div class="profile-stat-grid"><div class="profile-stat"><span>КЕЙСОВ ОТКРЫТО</span><strong id="profileCases">0</strong></div><div class="profile-stat"><span>АПГРЕЙДОВ</span><strong id="profileUpgrades">0</strong></div><div class="profile-stat"><span>СКИНОВ В ИНВЕНТАРЕ</span><strong id="profileItems">0</strong></div><div class="profile-stat"><span>ПРОДАНО</span><strong id="profileSold">0</strong></div></div><div class="profile-history-head"><h3>ИСТОРИЯ ПРЕДМЕТОВ</h3><span>последние действия</span></div><div id="profileHistory" class="profile-history"><div class="empty">История пока пуста.</div></div><div class="history-pagination profile-history-pager"><button type="button" onclick="changeHistoryPage(-1,'profile')" aria-label="Предыдущая страница истории">‹</button><span id="profileHistoryPage">1 / 1</span><button type="button" onclick="changeHistoryPage(1,'profile')" aria-label="Следующая страница истории">›</button></div><div class="profile-footer-hint">U — профиль · двойное нажатие — админ-панель.</div></div></div>
 <div id="adminModal" class="modal-overlay" onclick="if(event.target===this)closeAdminPanel()">
  <div class="topup-modal admin-modal" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
   <button class="modal-close" onclick="closeAdminPanel()" aria-label="Закрыть">×</button>
@@ -729,8 +944,9 @@ button,input,select,textarea{font:inherit}button{transition:transform .22s ease,
 const API='https://raw.githubusercontent.com/ByMykel/CSGO-API/main/public/api/en';
 const API_SOURCES=[API,'https://cdn.jsdelivr.net/gh/ByMykel/CSGO-API@main/public/api/en','https://fastly.jsdelivr.net/gh/ByMykel/CSGO-API@main/public/api/en','https://bymykel.github.io/CSGO-API/api/en'];
 const PRICE_API='https://raw.githubusercontent.com/17mafo/cs-price-tracker/main/static/prices/latest.json';
-const PRICE_API_SOURCES=[PRICE_API,'https://cdn.jsdelivr.net/gh/17mafo/cs-price-tracker@main/static/prices/latest.json'];
+const PRICE_API_SOURCES=[PRICE_API,'https://cdn.jsdelivr.net/gh/17mafo/cs-price-tracker@main/static/prices/latest.json','https://fastly.jsdelivr.net/gh/17mafo/cs-price-tracker@main/static/prices/latest.json','https://raw.githack.com/17mafo/cs-price-tracker/main/static/prices/latest.json'];
 const PRICE_SNAPSHOT_LABEL='Steam Market · latest available daily feed';
+const PRICE_RATE_LABEL='ЦБ РФ: 1 EUR = 90,2429 ₽ (26.10.2026)';
 const LOSS_PAYOUT_RANGE=[0.30,0.90],WIN_PAYOUT_RANGE=[1.10,2.50],PROFIT_ROLL_CHANCE=0.35,MAJOR_PROFIT_ROLL_CHANCE=0.40;
 let selectedOpenQty=1;
 let lastOpenedQty=1;
@@ -738,6 +954,7 @@ let upgradeCashStake=0;
 const DEFAULT_UPGRADE_CHANCES=Object.freeze({'1.5':75,'2':50,'3':30,'5':20,'10':10});
 let upgradeChanceOverrides={...DEFAULT_UPGRADE_CHANCES};
 let upgradeGoldBonusActive=false,upgradeGoldFlashActive=false,upgradeGoldCenterAngle=0,upgradeChainRunning=false,upgradeChainMultiplier=1,upgradeWheelRotation=0;
+let upgradeResultPanelPinned=false;
 let upgradeSpinCount=0;
 let adminForceOutcomeEnabled=false,adminForcedOutcome="success",adminForceGoldHit=false;
 let adminCaseDropOverrideEnabled=false,adminCaseDropOverride="profit";
@@ -787,7 +1004,8 @@ function parsePriceValue(v){
 }
 function priceKey(name){return String(name||'').normalize('NFKC').trim().toLowerCase().replace(/stat\s*trak™?/g,'stattrak').replace(/[™®]/g,'').replace(/\s+/g,' ')}
 function marketValueByHashName(name){if(!name)return null;const exact=marketPrices.get(priceKey(name));if(exact!=null)return exact;return null}
-function marketBaseName(x){return x?.statTrak?'StatTrak™ '+x.name:String(x?.name||'')}
+function marketBaseName(x){const n=String(x?.name||'');if(x?._souvenirVariant)return /^souvenir\s/i.test(n)?n:'Souvenir '+n;return x?.statTrak?'StatTrak™ '+n:n}
+function supportsSouvenir(x){const v=x?.souvenir;return v===true||v===1||(typeof v==='string'&&v.trim()!=='')||(Array.isArray(v)&&v.length>0)||(!!v&&typeof v==='object')}
 function marketValueForSkin(x,wearName=null){if(!x?.name)return null;const base=marketBaseName(x);if(wearName){const exact=marketValueByHashName(`${base} (${wearName})`);return exact!=null&&exact>0?exact:null}const names=[`${base} (Field-Tested)`,`${base} (Minimal Wear)`,`${base} (Factory New)`,`${base} (Well-Worn)`,`${base} (Battle-Scarred)`,base];for(const n of names){const v=marketValueByHashName(n);if(v!=null&&v>0)return v}return null}
 function fallbackPrice(x){
  if(x&&x._fallback===true&&Number.isFinite(Number(x._fallbackPrice))&&Number(x._fallbackPrice)>0){const wear=x?.wearName;const wearFactor={'Factory New':1.30,'Minimal Wear':1.14,'Field-Tested':1,'Well-Worn':.90,'Battle-Scarred':.80}[wear]||1;return roundPrice(Number(x._fallbackPrice)*wearFactor*(x?.statTrak?1.45:1));}
@@ -847,8 +1065,8 @@ function basePrice(x){return priceForItem(x,x?.wearName||null)}
 function estimatePrice(x){return basePrice(x)}
 function caseMarketPriceRub(c){if(!c?.name)return 0;const exact=marketValueByHashName(c.name);if(exact!=null&&exact>0)return roundPrice(exact*EUR_RUB);return roundPrice((FALLBACK_CASE_USD[c.name]||0.25)*USD_RUB)}
 function roundCasePrice(value){const n=Number(value)||0;if(n<=0)return 0;return n<100?Math.max(10,Math.round(n/10)*10):Math.max(100,Math.round(n/100)*100)}
-function caseOpenPrice(c){if(c&&c._isMajorCase&&Number.isFinite(Number(c._majorPrice)))return Number(c._majorPrice);return roundCasePrice(caseMarketPriceRub(c))}
-function fullName(x){const name=(x?.statTrak?'StatTrak™ ':'')+String(x?.name||'CS2 item');return x?.wearName?`${name} (${x.wearName})`:name}
+function caseOpenPrice(c){if(c&&c._isMajorCase&&Number.isFinite(Number(c._majorPrice)))return Number(c._majorPrice);return caseMarketPriceRub(c)}
+function fullName(x){const raw=String(x?.name||'CS2 item');const prefix=x?._souvenirVariant?( /^souvenir\s/i.test(raw)?'':'Souvenir '):(x?.statTrak?'StatTrak™ ':'');const name=prefix+raw;return x?.wearName?`${name} (${x.wearName})`:name}
 function targetKey(x){return x?.marketId||`${x?.id||x?.name||'item'}|${x?.wearName||'default'}`}
 function randomWear(x){let min=Number.isFinite(Number(x?.min_float))?Number(x.min_float):0,max=Number.isFinite(Number(x?.max_float))?Number(x.max_float):1;if(max<=min){min=0;max=1}const adjustedMax=min+(max-min)*0.96;const fl=min+Math.random()*(adjustedMax-min);const wear=fl<WEAR_BOUNDS[0]?'Factory New':fl<WEAR_BOUNDS[1]?'Minimal Wear':fl<WEAR_BOUNDS[2]?'Field-Tested':fl<WEAR_BOUNDS[3]?'Well-Worn':'Battle-Scarred';return {wearName:wear,floatValue:fl}}
 function makeDropVariant(x){const w=randomWear(x);const eligible=supportsStatTrak(x);let statTrak=eligible&&Math.random()<0.10;let eur=marketValueForSkin({...x,statTrak},w.wearName);if(statTrak&&eur==null){statTrak=false;eur=marketValueForSkin(x,w.wearName)}return {...x,...w,statTrak,price:eur!=null?Math.max(0.01,roundPrice(eur*EUR_RUB)):priceForItem({...x,...w,statTrak}),_marketPrice:eur!=null,_priceEstimated:eur==null,marketId:`${x.id||x.name}|${statTrak?'st':'normal'}|${w.wearName}`,demoId:Date.now().toString(36)+Math.random().toString(36).slice(2,7),obtained:Date.now()}}
@@ -864,6 +1082,13 @@ function makePricedVariants(){
     const stEur=marketValueForSkin({...s,statTrak:true},wearName);
     if(stEur!=null)matched++;
     pricedVariants.push({...s,wearName,statTrak:true,price:stEur!=null?roundPrice(stEur*EUR_RUB):fallbackPrice({...s,wearName,statTrak:true}),marketId:`${s.id||s.name}|st|${wearName}`,demoId:`${s.id||s.name}|st|${wearName}`,_marketPrice:stEur!=null,_priceEstimated:stEur==null});
+   }
+   if(supportsSouvenir(s)&&!/^souvenir\s/i.test(String(s.name||''))){
+    const souvenirItem={...s,wearName,statTrak:false,_souvenirVariant:true};
+    const souvEur=marketValueForSkin(souvenirItem,wearName);
+    if(souvEur!=null)matched++;
+    const estimate=fallbackPrice({...s,wearName,statTrak:false})*1.85;
+    pricedVariants.push({...souvenirItem,price:souvEur!=null?roundPrice(souvEur*EUR_RUB):roundPrice(estimate),marketId:`${s.id||s.name}|souvenir|${wearName}`,demoId:`${s.id||s.name}|souvenir|${wearName}`,_marketPrice:souvEur!=null,_priceEstimated:souvEur==null});
    }
   }
  }
@@ -907,9 +1132,9 @@ function playCoinDropSound(){
 function playUpgradeWinSound(){audioNote(62,28,.62,.13,'sawtooth',0);audioNoise(.14,.06,290,.035);audioNote(156,54,.38,.06,'square',.09);audioNoise(.09,.03,620,.16)}
 function playUpgradeFailSound(){audioNote(74,25,.58,.13,'square',0);audioNoise(.19,.065,210,.025);audioNote(95,38,.33,.052,'sawtooth',.11)}
 function burstConfetti(intensity=1){const root=document.getElementById('confettiLayer');if(!root)return;const colors=['#f5bc55','#68d49a','#67b6ff','#c28aff','#ff7c99','#fff0bc','#f38d46'];const count=Math.max(28,Math.min(150,Math.round(82*intensity)));for(let i=0;i<count;i++){const bit=document.createElement('i');bit.className='confetti-bit'+(Math.random()<.24?' round':'');bit.style.left=(Math.random()*100)+'%';bit.style.background=colors[Math.floor(Math.random()*colors.length)];bit.style.setProperty('--fall',(1.25+Math.random()*1.4)+'s');bit.style.setProperty('--drift',((Math.random()-.5)*260)+'px');bit.style.setProperty('--spin',((Math.random()<.5?-1:1)*(360+Math.random()*1080))+'deg');bit.style.animationDelay=(Math.random()*.18)+'s';root.appendChild(bit);setTimeout(()=>bit.remove(),3100)} }
-function loadStore(){try{let s=JSON.parse(localStorage.getItem('yarikBattleBetaV1')||'null');if(s){balance=Number.isFinite(s.balance)?s.balance:0;inventory=Array.isArray(s.inventory)?s.inventory:[];opened=s.opened||0;upgradeSpinCount=Math.max(0,Math.floor(Number(s.upgradeSpinCount)||0));activityHistory=Array.isArray(s.activityHistory)?s.activityHistory:[]}else{balance=0;inventory=[];opened=0;upgradeSpinCount=0;activityHistory=[]}}catch(e){activityHistory=[]}try{soundEnabled=localStorage.getItem('yarikBattleSound')!=='off'}catch(e){}loadAdminSettingsFromStore();updateBalance();updateStats();renderHeaderStats();loadProfileAvatar()}
+function loadStore(){try{let s=JSON.parse(localStorage.getItem('yarikBattleBetaV1')||'null');if(s){balance=Number.isFinite(s.balance)?s.balance:0;inventory=Array.isArray(s.inventory)?s.inventory:[];opened=s.opened||0;upgradeSpinCount=Math.max(0,Math.floor(Number(s.upgradeSpinCount)||0));activityHistory=Array.isArray(s.activityHistory)?s.activityHistory:[]}else{balance=0;inventory=[];opened=0;upgradeSpinCount=0;activityHistory=[]}}catch(e){activityHistory=[]}try{soundEnabled=localStorage.getItem('yarikBattleSound')!=='off'}catch(e){}loadAdminSettingsFromStore();try{const snap=JSON.parse(localStorage.getItem('yarikBattleBalanceV2')||'null');const mainStore=JSON.parse(localStorage.getItem('yarikBattleBetaV1')||'null');if(snap&&Number.isFinite(snap.balance)&&Number(snap.updatedAt||0)>Number(mainStore?.updatedAt||0))balance=Number(snap.balance)}catch(e){}updateBalance();updateStats();renderHeaderStats();loadProfileAvatar()}
 function renderHeaderStats(){const u=document.getElementById('headerUpgradeCount'),c=document.getElementById('headerCaseCount');if(u)u.textContent=Math.max(0,Number(upgradeSpinCount)||0).toLocaleString('ru-RU');if(c)c.textContent=Math.max(0,Number(opened)||0).toLocaleString('ru-RU')}
-function saveStore(){try{localStorage.setItem('yarikBattleBetaV1',JSON.stringify({balance,inventory,opened,upgradeSpinCount,activityHistory:activityHistory.slice(0,1000)}))}catch(e){}updateBalance();updateStats();renderHeaderStats();if(typeof updateOpenOptions==='function')updateOpenOptions();if(typeof renderActiveHistory==='function')renderActiveHistory()}
+function saveStore(){const updatedAt=Date.now();try{localStorage.setItem('yarikBattleBetaV1',JSON.stringify({balance,inventory,opened,upgradeSpinCount,activityHistory:activityHistory.slice(0,1000),updatedAt}));localStorage.setItem('yarikBattleBalanceV2',JSON.stringify({balance,updatedAt}))}catch(e){}updateBalance();updateStats();renderHeaderStats();if(typeof updateOpenOptions==='function')updateOpenOptions();if(typeof renderActiveHistory==='function')renderActiveHistory()}
 function updateBalance(){document.getElementById('balanceText').textContent=money(balance);const curr=document.getElementById('topupCurrentBalance');if(curr)curr.textContent=money(balance)}
 function openTopup(){const modal=document.getElementById('topupModal');if(modal){modal.classList.add('show');updateBalance()}}
 function closeTopup(){document.getElementById('topupModal')?.classList.remove('show')}
@@ -961,8 +1186,8 @@ function setProfileAvatar(file){
  if(file.size>4*1024*1024){toast('Изображение должно быть меньше 4 МБ');return}
  const reader=new FileReader();reader.onload=()=>{const data=String(reader.result||'');if(!data.startsWith('data:image/')){toast('Не удалось прочитать изображение');return}try{localStorage.setItem('yarikBattleAvatar',data)}catch(e){toast('Фото слишком большое для локального хранилища');return}applyProfileAvatar(data);toast('Фото профиля обновлено')};reader.onerror=()=>toast('Не удалось прочитать изображение');reader.readAsDataURL(file);
 }
-function addDemoFunds(amount){const value=Number(amount);if(![100,500,1000].includes(value))return;balance=roundPrice(balance+value);saveStore();closeTopup();toast('Добавлено '+money(value));}
-function addCustomDemoFunds(){const input=document.getElementById('customTopupAmount');const value=Math.floor(Number(input?.value)||0);if(!Number.isFinite(value)||value<1||value>1000000){toast('Введи сумму от 1 до 1 000 000 ₽');input?.focus();return}balance=roundPrice(balance+value);saveStore();if(input)input.value='';closeTopup();toast('Добавлено '+money(value));}
+function addDemoFunds(amount){const value=Number(amount);if(![100,500,1000].includes(value))return;balance=roundPrice(balance+value);updateBalance();closeTopup();if(typeof playTopupSound==='function')playTopupSound();toast('Добавлено '+money(value));if(typeof ybQueueLightStoreSave==='function')ybQueueLightStoreSave();if(typeof ybRefreshBalanceControls==='function')ybRefreshBalanceControls();}
+function addCustomDemoFunds(){const input=document.getElementById('customTopupAmount');const value=Math.floor(Number(input?.value)||0);if(!Number.isFinite(value)||value<1||value>1000000){toast('Введи сумму от 1 до 1 000 000 ₽');input?.focus();return}balance=roundPrice(balance+value);updateBalance();if(input)input.value='';closeTopup();if(typeof playTopupSound==='function')playTopupSound();toast('Добавлено '+money(value));if(typeof ybQueueLightStoreSave==='function')ybQueueLightStoreSave();if(typeof ybRefreshBalanceControls==='function')ybRefreshBalanceControls();}
 function updateStats(){let sum=inventory.reduce((a,b)=>a+(b.price||0),0);document.getElementById('statOpened').textContent=opened;document.getElementById('statItems').textContent=inventory.length;document.getElementById('statValue').textContent=money(sum);let a=document.getElementById('invCount');if(a)a.textContent=inventory.length;let b=document.getElementById('invValue');if(b)b.textContent=money(sum);let c=document.getElementById('invAvailable');if(c)c.textContent=inventory.length}
 function showPage(page){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));let el=document.getElementById('page-'+page);if(el)el.classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));if(page==='inventory')renderInventory();if(page==='upgrade')renderUpgradeSelects();if(page==='skins')renderCatalog(true);window.scrollTo({top:0,behavior:'smooth'})}
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),2600)}
@@ -1038,15 +1263,13 @@ function renderCases(){
   return `<article class="case-tile" onclick="selectAndOpenCase('${safe(nm)}')"><div class="case-tag">CS2 · ${String(i+1).padStart(2,'0')}</div><img loading="lazy" src="${safe(c.image)}" alt="${safe(c.name)}" onerror="this.style.opacity='.15'"><h3>${safe(c.name)}</h3><div class="case-foot"><span>${makeCasePool(c).length} предметов</span><span class="case-price">${casePriceLabel(c)}</span></div></article>`;
  }).join('');
  renderMajorCases(list);
- const firmGrid=document.getElementById('firmCaseGrid');
- if(firmGrid){const textures=list.slice(0,5);firmGrid.innerHTML=textures.map((c,i)=>`<article class="firm-case-tile" title="Фирменный кейс — скоро" onclick="toast('Фирменные кейсы появятся позже')"><img loading="lazy" src="${safe(c.image)}" alt="Текстура кейса ${i+1}"><span class="firm-question">?</span><span class="firm-case-label">ФИРМЕННЫЙ · ${String(i+1).padStart(2,'0')}</span></article>`).join('')}
  document.getElementById('heroCaseImg').alt=selectedCase.name;document.querySelector('.promo .art-stamp').textContent='YARIK-BATTLE · BETA';document.querySelector('.promo-copy p').textContent='Yarik-Battle: кейсы CS2, предметы и апгрейды. Цена кейса округлена, ключ не добавляется.';document.querySelector('.promo-copy .eyebrow').textContent='YARIK-BATTLE · CS2';renderCaseContents();syncCaseDetails();
 }
 function syncCaseDetails(){
  if(!selectedCase)return;const price=caseOpenPrice(selectedCase),title=selectedCase.name||'CS2 Case';
  const pt=document.getElementById('casePageTitle'),ps=document.getElementById('casePageSub'),dn=document.getElementById('detailCaseName'),op=document.getElementById('caseOpenPrice'),note=document.getElementById('casePriceNote');
  if(pt)pt.textContent=title.toUpperCase();if(ps)ps.textContent=selectedCase._isMajorCase?'YARIK-BATTLE · MAJOR SERIES · ЦЕНА ФИКСИРОВАНА':'ОРИГИНАЛЬНЫЙ КЕЙС CS2 · ЦЕНА БЕЗ КЛЮЧА';if(dn)dn.textContent=title;if(op)op.textContent=(selectedCase._isMajorCase?'':(marketValueByHashName(title)==null?'≈ ':''))+money(price);
- if(note)note.textContent=selectedCase._isMajorCase?'Мажор · тематический набор · фиксированная цена.':'Steam Market · 24.10.2026 · '+(marketValueByHashName(title)==null?'оценка ≈ ':'котировка источника · ')+'ключ не включён';
+ if(note){const stamp=new Date().toLocaleDateString('ru-RU');note.textContent=selectedCase._isMajorCase?'Мажор · тематический набор · фиксированная цена.':`Steam Market · дневной фид · ${stamp} · `+(marketValueByHashName(title)==null?'оценка ≈ ':'котировка источника · ')+'ключ не включён';note.title='Цены Steam Market из последней доступной дневной базы; котировки источника в EUR, пересчёт по курсу EUR/RUB 90,2429 на 26.10.2026. Значения с ≈ — оценки.';}
  const b=document.getElementById('openButton2');if(b)b.textContent='ОТКРЫТЬ';const h=document.getElementById('openButton');if(h)h.textContent='ОТКРЫТЬ КЕЙС';updateOpenOptions(false);
 }
 function selectAndOpenCase(name){const c=crates.find(z=>z.name===name&&z.type==='Case');if(c){selectedCase=c;caseItems=makeCasePool(c);document.getElementById('heroCaseImg').src=c.image||'';document.getElementById('detailCaseImg').src=c.image||'';document.getElementById('heroCaseImg').style.filter='';document.getElementById('detailCaseImg').style.filter='';syncCaseDetails();renderCaseContents();toast('Выбран кейс: '+c.name)}openCasePage()}
@@ -1274,28 +1497,24 @@ function renderUpgradeInventoryGrid(){
  grid.innerHTML=arr.map(x=>`<button type="button" class="upgrade-item-card ${selectedUpgradeItemIds.includes(x.demoId)?'selected':''}" style="--rarity:${safe(gradeColor(x))}" onclick="selectUpgradeSource('${safe(x.demoId)}')"><span class="chosen-mark">✓</span>${makeImg(x)}<strong>${safe(fullName(x))}</strong><span class="upgrade-item-wear">${x.floatValue!=null?'Float '+x.floatValue.toFixed(4):safe(fmtRank(x))}</span><span class="upgrade-item-price">${priceLabel(x)}</span><span class="upgrade-item-wear">${selectedUpgradeItemIds.includes(x.demoId)?'В СТАВКЕ':'НАЖМИ ДЛЯ ВЫБОРА'}</span></button>`).join('');
 }
 function selectUpgradeSource(id){
- upgradeSourceTouched=true;
+ clearUpgradeResultPin();upgradeSourceTouched=true;
  if(selectedUpgradeItemIds.includes(id))selectedUpgradeItemIds=selectedUpgradeItemIds.filter(x=>x!==id);
  else{if(selectedUpgradeItemIds.length>=6){toast('В апгрейд можно добавить максимум 6 скинов');return}selectedUpgradeItemIds.push(id)}
  selectedUpgradeItemId=selectedUpgradeItemIds[0]||null;selectedUpgradeTargetKey=null;renderUpgradeSelects()
 }
-function clearUpgradeSources(){upgradeSourceTouched=true;selectedUpgradeItemIds=[];selectedUpgradeItemId=null;selectedUpgradeTargetKey=null;renderUpgradeSelects()}
-function useForUpgrade(id){upgradeSourceTouched=true;selectedUpgradeItemIds=[id];selectedUpgradeItemId=id;selectedUpgradeTargetKey=null;showPage('upgrade');renderUpgradeSelects()}
-function setUpgradeMultiplier(mul){upgradeMultiplier=Number(mul);selectedUpgradeTargetKey=null;document.querySelectorAll('.multiplier-chip').forEach(b=>b.classList.toggle('active',Number(b.dataset.mul)===upgradeMultiplier));updateUpgrade()}
+function clearUpgradeSources(){clearUpgradeResultPin();upgradeSourceTouched=true;selectedUpgradeItemIds=[];selectedUpgradeItemId=null;selectedUpgradeTargetKey=null;renderUpgradeSelects()}
+function useForUpgrade(id){clearUpgradeResultPin();upgradeSourceTouched=true;selectedUpgradeItemIds=[id];selectedUpgradeItemId=id;selectedUpgradeTargetKey=null;showPage('upgrade');renderUpgradeSelects()}
+function setUpgradeMultiplier(mul){clearUpgradeResultPin();upgradeMultiplier=Number(mul);selectedUpgradeTargetKey=null;document.querySelectorAll('.multiplier-chip').forEach(b=>b.classList.toggle('active',Number(b.dataset.mul)===upgradeMultiplier));updateUpgrade()}
 function setUpgradeSpeed(speed){upgradeSpeed=speed==='normal'?'normal':'fast';document.querySelectorAll('[data-upgrade-speed]').forEach(b=>b.classList.toggle('active',b.dataset.upgradeSpeed===upgradeSpeed));const b=document.getElementById('upgradeQuickSpeed'),label=document.getElementById('upgradeQuickSpeedLabel'),state=document.getElementById('upgradeSpeedState');if(b){b.classList.toggle('active',upgradeSpeed==='fast');b.title=upgradeSpeed==='fast'?'Быстрая прокрутка':'Обычная прокрутка'}if(label)label.textContent=upgradeSpeed==='fast'?'БЫСТРО':'ОБЫЧНО';if(state)state.textContent=upgradeSpeed==='fast'?'ϟ Быстрая прокрутка':'ϟ Обычная прокрутка';}
 function toggleUpgradeSpeed(){setUpgradeSpeed(upgradeSpeed==='fast'?'normal':'fast')}
 function toggleUpgradeSound(){soundEnabled=!soundEnabled;try{localStorage.setItem('yarikBattleSound',soundEnabled?'on':'off')}catch(e){}const b=document.getElementById('upgradeSoundToggle'),icon=document.getElementById('upgradeSoundIcon'),label=document.getElementById('upgradeSoundLabel');if(b){b.classList.toggle('active',soundEnabled);b.classList.toggle('muted',!soundEnabled);b.title=soundEnabled?'Звук включён':'Звук выключен'}if(icon)icon.textContent=soundEnabled?'◖))':'◖×';if(label)label.textContent=soundEnabled?'ЗВУК':'БЕЗ ЗВУКА';toast(soundEnabled?'Звук включён':'Звук выключен')}
 function upgradeChance(mul){
- const key=String(Number(mul)),value=Number(upgradeChanceOverrides?.[key]);
- return Math.max(.01,Math.min(75,Number.isFinite(value)?value:(DEFAULT_UPGRADE_CHANCES[key]??50)));
+ const key=String(Number(mul));
+ return Math.max(.01,Math.min(75,Number(DEFAULT_UPGRADE_CHANCES[key]??50)));
 }
 function loadUpgradeChanceSettings(){
- try{
-  const saved=JSON.parse(localStorage.getItem('yarikUpgradeChanceOverrides')||'null');
-  if(saved&&typeof saved==='object')for(const key of Object.keys(DEFAULT_UPGRADE_CHANCES)){
-   const n=Number(saved[key]);if(Number.isFinite(n)&&n>=.01&&n<=75)upgradeChanceOverrides[key]=n;
-  }
- }catch(e){}
+ upgradeChanceOverrides={...DEFAULT_UPGRADE_CHANCES};
+ try{localStorage.removeItem('yarikUpgradeChanceOverrides')}catch(e){}
  syncUpgradeChanceSettingsUI();
 }
 function syncUpgradeChanceSettingsUI(){
@@ -1345,12 +1564,27 @@ function usefulUpgradeStakeLimit(from,target,mul=upgradeMultiplier){
 }
 function setUpgradeCashStake(value){
  if(upgradeBusy||globalInteractionBusy)return;
+ clearUpgradeResultPin();
  const from=makeUpgradeSource(),target=upgradeLastTargets.find(x=>targetKey(x)===selectedUpgradeTargetKey);
  const cap=usefulUpgradeStakeLimit(from,target,upgradeMultiplier);
- const requested=Math.max(0,Math.floor(Number(value)||0));const amount=Math.min(requested,Math.floor(balance),cap);
- upgradeCashStake=amount;const input=document.getElementById('upgradeCashStakeInput');if(input){input.max=String(cap);input.value=String(amount)}const cashLabel=document.getElementById('upgradeCashStakeLabel');if(cashLabel)cashLabel.textContent=money(amount);
+ const requested=Math.max(0,Math.floor(Number(value)||0));
+ upgradeCashStake=Math.min(requested,Math.floor(balance),cap);
+ const input=document.getElementById('upgradeCashStakeInput');
+ if(input){input.max=String(cap);input.value=String(upgradeCashStake);input.disabled=cap<=0}
+ const cashLabel=document.getElementById('upgradeCashStakeLabel');if(cashLabel)cashLabel.textContent=money(upgradeCashStake);
+ const cashAvailable=document.getElementById('upgradeCashAvailable');if(cashAvailable)cashAvailable.textContent=money(balance);
+ const chance=from&&target?chanceForUpgradeTarget(from,target,upgradeMultiplier,upgradeCashStake):upgradeChance(upgradeMultiplier);
+ setUpgradeOddsAnimated(fmtChance(chance));setWheelCenterAnimated(fmtChance(chance));updateWheelChance(chance);
+ const ratioLabel=document.getElementById('upgradeRatioLabel');if(ratioLabel)ratioLabel.textContent=`×${upgradeMultiplier} · вклад ${money(upgradeCashStake)} · максимум 75%`;
+ const fromCard=document.getElementById('wheelFromCard');if(fromCard&&from)fromCard.innerHTML=`<span>ТВОЯ СТАВКА</span><strong>${money(from.price+upgradeCashStake)}</strong>`;
+ const targetCard=document.getElementById('wheelTargetCard');if(targetCard&&target)targetCard.innerHTML=`<span>ЦЕЛЬ</span><strong>${safe(fullName(target))}<br>${money(target.price)}</strong>`;
+ const button=document.getElementById('upgradeButton');if(button){button.disabled=!from||!target;button.dataset.odds=String(chance);if(target)button.dataset.target=targetKey(target)}
+ // Update visible ratio pills in place; the expensive candidate grid is not rebuilt while dragging.
+ document.querySelectorAll('#upgradeTargetGrid [data-upgrade-target]').forEach(card=>{
+  const item=upgradeLastTargets.find(x=>targetKey(x)===card.dataset.upgradeTarget);const pill=card.querySelector('.ratio-pill');
+  if(item&&pill&&from){const ratio=item.price/Math.max(.01,from.price+upgradeCashStake);pill.textContent=`×${ratio.toFixed(2).replace('.',',')} · ${fmtChance(chanceForUpgradeTarget(from,item,upgradeMultiplier,upgradeCashStake))}`}
+ });
  if(requested>cap&&cap===0&&requested>0)toast('Шанс уже 75% или цель не выбрана — дополнительный вклад не нужен');
- updateUpgrade();
 }
 function addUpgradeCash(amount){
  if(upgradeBusy||globalInteractionBusy)return;
@@ -1377,29 +1611,36 @@ function wheelColorAtAngle(angle,pct){
   const strength=d>winHalf-edge?Math.max(0,Math.min(1,(winHalf-d)/edge)):1;
   c=mixHex(dark,color,strength);
  }
- // Exactly 18 degrees of gold, centered at the bonus landing position.
+ // Matte metallic-gold sector: exactly 18 degrees, no neon halo.
  if(upgradeGoldBonusActive||upgradeGoldFlashActive){
-  if(d<=8.65)c='#f5c94e';
-  else if(d<9)c=mixHex('#f5c94e',c,(d-8.65)/.35);
+  if(d<=1.1)c='#ffe7a0';
+  else if(d<=2.8)c='#f5cf63';
+  else if(d<=5.3)c='#dfad35';
+  else if(d<=8.65)c='#bd841f';
+  else if(d<9)c=mixHex('#bd841f',c,(d-8.65)/.35);
  }
  return c;
 }
 function updateWheelChance(chance){
  const el=document.getElementById('wheel');if(!el)return;
+ // Restore stylesheet transitions after the previous spin. The arc itself stays still during roulette, but glides on new chance values.
+ el.style.removeProperty('transition');el.style.removeProperty('transform');
  const pct=Math.max(.01,Math.min(75,Number(chance??upgradeChance(upgradeMultiplier))));
- const arcHue=pct<=25?'#ed454d':pct<=40?'#ff9d35':'#28d77c';
- document.documentElement.style.setProperty('--active-arc-color',arcHue);
- // Sample the circular color field every degree to create a smooth, blurred-looking gradient instead of hard wedges.
- const stops=[];for(let angle=0;angle<=360;angle+=1)stops.push(`${wheelColorAtAngle(angle,pct)} ${angle}deg`);
- const gradient=`conic-gradient(from 0deg,${stops.join(',')})`;
- el.style.background=gradient;
+ const hue=pct<=25?'#f08391':pct<=40?'#f0bb78':'#74e2c2';
+ const edge=pct<=25?'#d86b83':pct<=40?'#e4a364':'#62c7b0';
+ const half=pct*1.8,start=180-half,end=180+half;
+ // Registered CSS angle properties animate the arc itself rather than blurring the entire wheel.
+ el.style.setProperty('--win-start-soft',`${Math.max(0,start-2.4)}deg`);
+ el.style.setProperty('--win-start',`${start}deg`);
+ el.style.setProperty('--win-mid','180deg');
+ el.style.setProperty('--win-end',`${end}deg`);
+ el.style.setProperty('--win-end-soft',`${Math.min(360,end+2.4)}deg`);
+ el.style.setProperty('--active-arc-color',hue);
+ el.style.setProperty('--active-arc-edge',edge);
+ el.classList.toggle('gold-sector-visible',!!(upgradeGoldBonusActive||upgradeGoldFlashActive));
  el.classList.remove('chance-changed');void el.offsetWidth;el.classList.add('chance-changed');
- window.setTimeout(()=>el.classList.remove('chance-changed'),390);
- const glow=document.getElementById('wheelGlow');
- if(glow){glow.style.background=gradient;glow.classList.toggle('gold-glow',!!(upgradeGoldBonusActive||upgradeGoldFlashActive))}
- el.style.boxShadow=(upgradeGoldBonusActive||upgradeGoldFlashActive)
-  ?'0 0 0 4px #141619,0 0 0 5px #4b4f59,0 14px 42px #000a,0 0 28px #ffd45c75,inset 0 0 22px #ffffff08'
-  :'0 0 0 4px #141619,0 0 0 5px #4b4f59,0 14px 42px #000a,0 0 12px #3fe18b10,inset 0 0 22px #ffffff08';
+ window.setTimeout(()=>el.classList.remove('chance-changed'),740);
+ const glow=document.getElementById('wheelGlow');if(glow){glow.style.background='none';glow.classList.remove('gold-glow')}
  const banner=document.getElementById('goldBonusBanner');
  if(banner){
   if(upgradeChainRunning){banner.classList.remove('hidden-state');banner.classList.add('chain-mode');banner.textContent=`ЗОЛОТАЯ СЕРИЯ · В БАНКЕ ×${upgradeChainMultiplier} · ПРИ ПРОИГРЫШЕ ЗАБИРАЕШЬ ПОСЛЕДНИЙ ВЫИГРЫШ`}
@@ -1409,12 +1650,11 @@ function updateWheelChance(chance){
 }
 function flashGoldSectorHit(chance){
  upgradeGoldFlashActive=true;
- const wheel=document.getElementById('wheel'),glow=document.getElementById('wheelGlow');
+ const wheel=document.getElementById('wheel');
  if(wheel){wheel.classList.remove('gold-sector-hit');void wheel.offsetWidth;wheel.classList.add('gold-sector-hit')}
- if(glow){glow.classList.remove('gold-sector-hit');void glow.offsetWidth;glow.classList.add('gold-sector-hit')}
  updateWheelChance(chance);
  window.setTimeout(()=>{
-  upgradeGoldFlashActive=false;wheel?.classList.remove('gold-sector-hit');glow?.classList.remove('gold-sector-hit');
+  upgradeGoldFlashActive=false;wheel?.classList.remove('gold-sector-hit');
   updateWheelChance(upgradeChainRunning?50:upgradeChance(upgradeMultiplier));
  },1150);
 }
@@ -1509,6 +1749,26 @@ function handleUpgradeFeedPick(encoded){
  if(!(upgradeLastTargets||[]).some(x=>targetKey(x)===key)){toast('Цель не подходит к выбранной ставке — выбери её в каталоге справа');return}
  selectUpgradeTarget(key);
 }
+function setAnimatedReadout(id,value,animationClass='chance-float'){
+ const el=document.getElementById(id);if(!el)return;
+ const next=String(value);
+ if(el.textContent===next)return;
+ el.classList.remove(animationClass);el.textContent=next;void el.offsetWidth;el.classList.add(animationClass);
+ window.setTimeout(()=>el.classList.remove(animationClass),620);
+}
+function setWheelCenterAnimated(value){setAnimatedReadout('wheelCenter',value,'chance-float')}
+function setUpgradeOddsAnimated(value){setAnimatedReadout('upgradeOdds',value,'chance-float-small')}
+function setUpgradeResultPanel(item,caption='РЕЗУЛЬТАТ АПГРЕЙДА',detail=''){
+ const box=document.getElementById('upgradeTargetSummary');if(!box)return;
+ upgradeResultPanelPinned=true;box.classList.add('upgrade-result-pinned');box.classList.remove('upgrade-result-item-in');
+ if(!item){box.innerHTML='<div><strong>Цель не выбрана</strong><p>Выбери скин из списка справа.</p></div>';return}
+ const copy=detail?`<br>${safe(detail)}`:'';
+ box.innerHTML=`${makeImg(item)}<div><strong>${safe(fullName(item))}</strong><div class="price">${priceLabel(item)}</div><p>${safe(caption)}${copy}</p></div>`;
+ void box.offsetWidth;box.classList.add('upgrade-result-item-in');
+ box.setAttribute('aria-label',`${caption}: ${fullName(item)}`);
+}
+function clearUpgradeResultPin(){upgradeResultPanelPinned=false;const box=document.getElementById('upgradeTargetSummary');if(box)box.classList.remove('upgrade-result-pinned')}
+
 function updateNextDropPreview(target){
  const image=document.getElementById('wheelCylinderImage'),name=document.getElementById('wheelCylinderName'),price=document.getElementById('wheelCylinderPrice'),box=document.getElementById('wheelCylinderPreview');
  if(!image||!name||!price||!box)return;
@@ -1533,16 +1793,16 @@ function rehomeUpgradeLayout(){
 function updateUpgrade(){
  if(upgradeBusy)return;
  const restingWheel=document.getElementById('wheel'),restingGlow=document.getElementById('wheelGlow'),restingPointer=document.getElementById('wheelRotor');
- if(restingWheel)restingWheel.style.transition='none';
- if(restingGlow)restingGlow.style.transition='none';
+ if(restingWheel){restingWheel.style.removeProperty('transition');restingWheel.style.removeProperty('transform')}
+ if(restingGlow){restingGlow.style.removeProperty('transition');restingGlow.style.removeProperty('transform')}
  if(restingPointer){restingPointer.style.transition='none';restingPointer.style.transform='rotate(0deg)'}
  const parts=currentUpgradeSources(),from=makeUpgradeSource(),fromPanel=document.getElementById('upgradeFrom'),grid=document.getElementById('upgradeTargetGrid'),button=document.getElementById('upgradeButton');
  const cashInput=document.getElementById('upgradeCashStakeInput'),cashAvailable=document.getElementById('upgradeCashAvailable'),cashNote=document.querySelector('.upgrade-cash-note'),cashButtons=[...document.querySelectorAll('.upgrade-cash-row button')];
  if(cashAvailable)cashAvailable.textContent=money(balance);const cashLabel=document.getElementById('upgradeCashStakeLabel');if(cashLabel)cashLabel.textContent=money(upgradeCashStake);
  if(!from){
   upgradeCashStake=0;upgradeLastTargets=[];fromPanel.innerHTML='<div><strong>Ставка не выбрана</strong><p>Выбери до 6 скинов слева. Их стоимость суммируется.</p></div>';grid.innerHTML='<div class="empty">Выбери предметы из инвентаря.</div>';
-  document.getElementById('targetCount').textContent='—';document.getElementById('upgradeTargetSummary').innerHTML='<div><strong>Цель не выбрана</strong><p>Выбери цель в списке.</p></div>';
-  const nominal=upgradeChance(upgradeMultiplier);document.getElementById('upgradeOdds').textContent=fmtChance(nominal);document.getElementById('wheelCenter').textContent=fmtChance(nominal);const subtitle=document.getElementById('wheelSubtitle');if(subtitle)subtitle.textContent='шанс на успех';document.getElementById('upgradeRatioLabel').textContent=`×${upgradeMultiplier} · шанс по стоимости цели`;
+  document.getElementById('targetCount').textContent='—';if(!upgradeResultPanelPinned)document.getElementById('upgradeTargetSummary').innerHTML='<div><strong>Цель не выбрана</strong><p>Выбери цель в списке.</p></div>';
+  const nominal=upgradeChance(upgradeMultiplier);setUpgradeOddsAnimated(fmtChance(nominal));setWheelCenterAnimated(fmtChance(nominal));const subtitle=document.getElementById('wheelSubtitle');if(subtitle)subtitle.textContent='шанс на успех';document.getElementById('upgradeRatioLabel').textContent=`×${upgradeMultiplier} · шанс по стоимости цели`;
   document.getElementById('wheelFromCard').innerHTML='<span>ТВОЯ СТАВКА</span><strong>—</strong>';document.getElementById('wheelTargetCard').innerHTML='<span>ЦЕЛЬ</span><strong>—</strong>';button.disabled=true;
   if(cashInput){cashInput.value='0';cashInput.max='0';cashInput.min='0';cashInput.disabled=true}if(cashLabel)cashLabel.textContent='0 ₽';cashButtons.forEach(b=>b.disabled=true);if(cashNote)cashNote.textContent='Выбери ставку и цель. При шансе 75% вклад недоступен.';
   updateWheelChance(nominal);renderUpgradeFeed([],null,null);updateNextDropPreview(null);return;
@@ -1567,15 +1827,15 @@ function updateUpgrade(){
  const chance=target?chanceForUpgradeTarget(from,target,upgradeMultiplier,upgradeCashStake):upgradeChance(upgradeMultiplier);
  renderUpgradeFeed(upgradeLastTargets,from,target);
  document.getElementById('upgradeRatioLabel').textContent=`×${upgradeMultiplier} · вклад ${money(upgradeCashStake)} · максимум 75%`;
- document.getElementById('upgradeOdds').textContent=fmtChance(chance);document.getElementById('wheelCenter').textContent=fmtChance(chance);const subtitle=document.getElementById('wheelSubtitle');if(subtitle)subtitle.textContent=target?'цель выбрана':'выбери цель';updateWheelChance(chance);
+ setUpgradeOddsAnimated(fmtChance(chance));setWheelCenterAnimated(fmtChance(chance));const subtitle=document.getElementById('wheelSubtitle');if(subtitle)subtitle.textContent=target?'цель выбрана':'выбери цель';updateWheelChance(chance);
  document.getElementById('wheelFromCard').innerHTML=`<span>ТВОЯ СТАВКА · ${parts.length} ПРЕДМ.</span><strong>${money(from.price+(upgradeCashStake||0))}</strong>`;
  const visibleTargets=upgradeLastTargets.filter(x=>!targetQuery||fullName(x).toLocaleLowerCase('ru-RU').includes(targetQuery)||(x.weapon?.name||'').toLocaleLowerCase('ru-RU').includes(targetQuery));
  const countNode=document.getElementById('targetCount');if(countNode)countNode.textContent=targetQuery?`${visibleTargets.length} из ${upgradeLastTargets.length}`:`${upgradeLastTargets.length} предметов`;
- grid.innerHTML=visibleTargets.length?visibleTargets.map(x=>{const key=targetKey(x),ratio=x.price/Math.max(.01,from.price+upgradeCashStake);return `<button type="button" class="upgrade-item-card ${key===selectedUpgradeTargetKey?'selected':''}" style="--rarity:${safe(gradeColor(x))}" onclick="selectUpgradeTarget('${safe(key)}')"><span class="chosen-mark">✓</span>${makeImg(x)}<strong>${safe(fullName(x))}</strong><span class="upgrade-item-wear">${x.wearName?safe(x.wearName):safe(fmtRank(x))}</span><span class="upgrade-item-price">${priceLabel(x)}</span><span class="ratio-pill">×${ratio.toFixed(2).replace('.',',')} · ${fmtChance(chanceForUpgradeTarget(from,x,upgradeMultiplier,upgradeCashStake))}</span></button>`}).join(''):(targetQuery?'<div class="empty"><b>Совпадений нет</b>Попробуй другое название.</div>':'<div class="empty"><b>Не нашлось точной цели</b>Для этого множителя нет предметов в пределах ±5,99% от целевой цены. Выбери другой множитель или добавь/убери скин из ставки.</div>');
- if(target){document.getElementById('upgradeTargetSummary').innerHTML=`${makeImg(target)}<div><strong>${safe(fullName(target))}</strong><div class="price">${priceLabel(target)}</div><p>Цена к ставке с учётом вклада: ×${(target.price/Math.max(.01,from.price+upgradeCashStake)).toFixed(2).replace('.',',')}<br>${target.wearName?safe(target.wearName):safe(fmtRank(target))}</p></div>`;document.getElementById('wheelTargetCard').innerHTML=`<span>ЦЕЛЬ</span><strong>${safe(fullName(target))}<br>${money(target.price)}</strong>`;button.disabled=false;button.dataset.target=targetKey(target);button.dataset.odds=String(chance)}
- else{document.getElementById('upgradeTargetSummary').innerHTML='<div><strong>Нет точной цели</strong><p>Не удалось найти предмет в диапазоне ±5,99%.</p></div>';document.getElementById('wheelTargetCard').innerHTML='<span>ЦЕЛЬ</span><strong>—</strong>';button.disabled=true;upgradeCashStake=0;if(cashInput){cashInput.value='0';cashInput.max='0';cashInput.min='0';cashInput.disabled=true}if(cashLabel)cashLabel.textContent='0 ₽';cashButtons.forEach(b=>b.disabled=true)}
+ grid.innerHTML=visibleTargets.length?visibleTargets.map(x=>{const key=targetKey(x),ratio=x.price/Math.max(.01,from.price+upgradeCashStake);return `<button type="button" class="upgrade-item-card ${key===selectedUpgradeTargetKey?'selected':''}" data-upgrade-target="${safe(key)}" style="--rarity:${safe(gradeColor(x))}" onclick="selectUpgradeTarget('${safe(key)}')"><span class="chosen-mark">✓</span>${makeImg(x)}<strong>${safe(fullName(x))}</strong><span class="upgrade-item-wear">${x.wearName?safe(x.wearName):safe(fmtRank(x))}</span><span class="upgrade-item-price">${priceLabel(x)}</span><span class="ratio-pill">×${ratio.toFixed(2).replace('.',',')} · ${fmtChance(chanceForUpgradeTarget(from,x,upgradeMultiplier,upgradeCashStake))}</span></button>`}).join(''):(targetQuery?'<div class="empty"><b>Совпадений нет</b>Попробуй другое название.</div>':'<div class="empty"><b>Не нашлось точной цели</b>Для этого множителя нет предметов в пределах ±5,99% от целевой цены. Выбери другой множитель или добавь/убери скин из ставки.</div>');
+ if(target){if(!upgradeResultPanelPinned){document.getElementById('upgradeTargetSummary').innerHTML=`${makeImg(target)}<div><strong>${safe(fullName(target))}</strong><div class="price">${priceLabel(target)}</div><p>Цена к ставке с учётом вклада: ×${(target.price/Math.max(.01,from.price+upgradeCashStake)).toFixed(2).replace('.',',')}<br>${target.wearName?safe(target.wearName):safe(fmtRank(target))}</p></div>`;document.getElementById('upgradeTargetSummary').classList.remove('upgrade-result-pinned')}document.getElementById('wheelTargetCard').innerHTML=`<span>ЦЕЛЬ</span><strong>${safe(fullName(target))}<br>${money(target.price)}</strong>`;button.disabled=false;button.dataset.target=targetKey(target);button.dataset.odds=String(chance)}
+ else{if(!upgradeResultPanelPinned)document.getElementById('upgradeTargetSummary').innerHTML='<div><strong>Нет точной цели</strong><p>Не удалось найти предмет в диапазоне ±5,99%.</p></div>';document.getElementById('wheelTargetCard').innerHTML='<span>ЦЕЛЬ</span><strong>—</strong>';button.disabled=true;upgradeCashStake=0;if(cashInput){cashInput.value='0';cashInput.max='0';cashInput.min='0';cashInput.disabled=true}if(cashLabel)cashLabel.textContent='0 ₽';cashButtons.forEach(b=>b.disabled=true)}
 }
-function selectUpgradeTarget(key){selectedUpgradeTargetKey=key;updateUpgrade()}
+function selectUpgradeTarget(key){clearUpgradeResultPin();selectedUpgradeTargetKey=key;updateUpgrade()}
 function makeRewardCopy(item){return {...item,demoId:Date.now().toString(36)+Math.random().toString(36).slice(2,9),obtained:Date.now(),_marketPrice:!!item?._marketPrice}}
 function isTopCatalogSkin(item){
  if(!item||!Number(item.price))return false;
@@ -1627,13 +1887,15 @@ async function runGoldenDoubleChain(startReward,originalChance,initialTarget){
   if(!next)break;
   step++;const nextMultiplier=multiplier*2;
   upgradeChainMultiplier=multiplier;updateWheelChance(50);updateNextDropPreview(next.duplicate?secured:next.item);
-  document.getElementById('wheelCenter').textContent='×'+multiplier;
+  setUpgradeResultPanel(next.duplicate?secured:next.item,`СЛЕДУЮЩАЯ ЦЕЛЬ · ×${nextMultiplier}`,`Текущий защищённый банк: ×${multiplier}`);
+  setWheelCenterAnimated('×'+multiplier);
   status.className='upgrade-status';status.textContent=`ЗОЛОТАЯ СЕРИЯ · БАНК ×${multiplier} · ${money(secured.price)} ЗАЩИЩЕНО · СЛЕДУЮЩИЙ ШАГ ×${nextMultiplier}`;
   const angle=Math.random()*360,landed=angleIsInsideWinArc(angle,50);
   const duration=upgradeSpeed==='fast'?690+Math.random()*220:3900+Math.random()*2600;
   await animateUpgradeSpin(angle,duration,upgradeSpeed);
   if(!landed){
    playUpgradeFailSound();status.className='upgrade-status success';status.textContent=`СЕРИЯ ОСТАНОВЛЕНА · ЗАБРАН ПОСЛЕДНИЙ ВЫИГРЫШ ×${multiplier} · ${fullName(secured)} · ${money(secured.price)}${extraCopies.length?` · +${extraCopies.length} копий`:''}`;
+   setUpgradeResultPanel(secured,`ЗАБРАНО · ЗАЩИЩЁННЫЙ БАНК ×${multiplier}`,`${money(secured.price)} сохранено`);
    break;
   }
   playUpgradeWinSound();playSkinRevealSound();
@@ -1644,13 +1906,15 @@ async function runGoldenDoubleChain(startReward,originalChance,initialTarget){
    secured=makeRewardCopy(next.item);multiplier=nextMultiplier;
    status.textContent=`×${multiplier} ЗАШЁЛ! · ${fullName(secured)} · ${money(secured.price)} УЖЕ В БАНКЕ`;
   }
-  document.getElementById('wheelCenter').textContent='×'+multiplier;
+  setWheelCenterAnimated('×'+multiplier);
+  setUpgradeResultPanel(secured,`УСПЕХ · БАНК ×${multiplier}`,`${money(secured.price)} защищено`);
  }
  if(step===0){status.className='upgrade-status success';status.textContent=`ЗОЛОТОЙ СЕКТОР · СЕРИЯ ×2 НЕ НАШЛА ПОДХОДЯЩУЮ ЦЕЛЬ · ЗАБРАН ${fullName(secured)} · ${money(secured.price)}`}
  if(step>=maxSteps){status.className='upgrade-status success';status.textContent=`ЛИМИТ СЕРИИ · ЗАБРАН ×${multiplier} · ${money(secured.price)} · ГАРАНТИРОВАННЫЙ КЭШ-АУТ`}
+ setUpgradeResultPanel(secured,`СЕРИЯ ЗАВЕРШЕНА · БАНК ×${multiplier}`,`${money(secured.price)} сохранено`);
  recordHistory('upgrade-win',secured,{targetName:fullName(initialTarget||secured)});extraCopies.forEach(x=>recordHistory('upgrade-win',x,{targetName:fullName(initialTarget||secured)}));inventory.unshift(secured,...extraCopies);
  upgradeChainRunning=false;upgradeChainMultiplier=1;upgradeGoldBonusActive=false;upgradeGoldCenterAngle=0;
- document.getElementById('wheelCenter').textContent=fmtChance(upgradeChance(upgradeMultiplier));updateWheelChance(upgradeChance(upgradeMultiplier));
+ setWheelCenterAnimated(fmtChance(upgradeChance(upgradeMultiplier)));updateWheelChance(upgradeChance(upgradeMultiplier));
  saveStore();upgradeBusy=false;selectedUpgradeItemIds=[];selectedUpgradeItemId=null;selectedUpgradeTargetKey=null;upgradeSourceTouched=true;setInteractionBusy(false);renderUpgradeSelects();renderInventory();updateOpenOptions();
  toast(`Золотая серия завершена · забрано ${extraCopies.length+1} предмет${extraCopies.length===0?'':'а'}`);
 }
@@ -1676,16 +1940,16 @@ function runUpgrade(){
  // The gold sector is exactly 5% of the wheel at the fixed top marker. On bonus spins it raises a smaller base chance to 5%.
  upgradeGoldBonusActive=adminForceGoldHit||(!adminForceOutcomeEnabled&&upgradeSpinCount%10===0);upgradeGoldCenterAngle=upgradeGoldBonusActive?180:0;
  const effectiveChance=upgradeGoldBonusActive&&chance<5?5:chance;
- if(upgradeGoldBonusActive&&upgradeSpeed!=='normal')setUpgradeSpeed('normal');
- const spinMode=upgradeGoldBonusActive?'normal':upgradeSpeed;
+ const spinMode=upgradeSpeed;
  setInteractionBusy(true);balance=roundPrice(Math.max(0,balance-cashToSpend));upgradeCashStake=0;if(cashInput)cashInput.value='0';saveStore();const button=document.getElementById('upgradeButton');button.disabled=true;
- document.getElementById('wheelFromCard').classList.remove('fail','success');document.getElementById('wheelTargetCard').classList.remove('fail','success');const status=document.getElementById('upgradeStatus');status.className='upgrade-status';status.textContent=upgradeGoldBonusActive?'Золотой сектор активен на фиксированном месте · прокрутка переключена на обычную…':'Апгрейд запущен…';
+ document.getElementById('wheelFromCard').classList.remove('fail','success');document.getElementById('wheelTargetCard').classList.remove('fail','success');const status=document.getElementById('upgradeStatus');status.className='upgrade-status';status.textContent=upgradeGoldBonusActive?'Золотой сектор · прокрутка в выбранном режиме…':'Апгрейд запущен…';
  let landingAngle;
  if(adminForceGoldHit){landingAngle=180}
  else if(adminForceOutcomeEnabled){landingAngle=chooseAngleForOutcome(chance,adminForcedOutcome==='success',true)}
  else{landingAngle=Math.random()*360}
  const goldHit=upgradeGoldBonusActive&&angularDistance(landingAngle,180)<=9.0001,success=goldHit||angleIsInsideWinArc(landingAngle,effectiveChance);
- updateWheelChance(effectiveChance);document.getElementById('wheelCenter').textContent=fmtChance(effectiveChance);
+ setUpgradeResultPanel(target,'ЦЕЛЬ ЭТОГО АПГРЕЙДА',`${money(target.price)} · шанс ${fmtChance(effectiveChance)}`);
+ updateWheelChance(effectiveChance);setWheelCenterAnimated(fmtChance(effectiveChance));
  const duration=spinMode==='fast'?520+Math.random()*140:(13500+Math.random()*7500);
  animateUpgradeSpin(landingAngle,duration,spinMode).then(async()=>{
   inventory=inventory.filter(x=>!sourceIds.has(x.demoId));
@@ -1693,13 +1957,13 @@ function runUpgrade(){
    flashGoldSectorHit(effectiveChance);updateNextDropPreview(target);
    status.className='upgrade-status success';status.textContent=`ЗОЛОТОЙ СЕКТОР! · ЗАПУСКАЕМ СЕРИЮ ×2 · БАНК ${money(target.price)}`;
    document.getElementById('wheelTargetCard').classList.add('success');document.getElementById('wheelTargetCard').classList.remove('fail');playUpgradeWinSound();
-   const reward=makeRewardCopy(target);document.getElementById('wheelCenter').textContent='×1';
+   const reward=makeRewardCopy(target);setWheelCenterAnimated('×1');
    await runGoldenDoubleChain(reward,chance,target);return;
   }
   upgradeGoldBonusActive=false;upgradeGoldCenterAngle=0;
-  if(success){const reward=makeRewardCopy(target);recordHistory('upgrade-win',reward,{targetName:fullName(target),chance:effectiveChance});inventory.unshift(reward);status.className='upgrade-status success';status.textContent=`УСПЕШНЫЙ АПГРЕЙД! ${fullName(reward)} · ${money(reward.price)} · шанс ${fmtChance(chance)}${cashToSpend?` · вклад ${money(cashToSpend)}`:''}`;document.getElementById('wheelTargetCard').classList.add('success');document.getElementById('wheelTargetCard').classList.remove('fail');playSkinRevealSound();setTimeout(playUpgradeWinSound,120);burstConfetti(1.35);toast('Успешный апгрейд!')}
-  else{sources.forEach(x=>recordHistory('upgrade-fail',x,{targetName:fullName(target),chance:effectiveChance}));status.className='upgrade-status fail';status.textContent=`НЕ УСПЕШНЫЙ АПГРЕЙД · потеряно предметов: ${sources.length}${cashToSpend?` + ${money(cashToSpend)}`:''} · шанс был ${fmtChance(chance)}`;document.getElementById('wheelFromCard').classList.add('fail');document.getElementById('wheelFromCard').classList.remove('success');document.getElementById('wheelTargetCard').classList.remove('success','fail');playUpgradeFailSound();setTimeout(playCoinDropSound,90);toast('Апгрейд не прошёл — ставка потеряна')}
-  saveStore();upgradeBusy=false;selectedUpgradeItemIds=[];selectedUpgradeItemId=null;selectedUpgradeTargetKey=null;upgradeSourceTouched=true;setInteractionBusy(false);updateWheelChance(upgradeChance(upgradeMultiplier));document.getElementById('wheelCenter').textContent=fmtChance(upgradeChance(upgradeMultiplier));renderUpgradeSelects();renderInventory();updateOpenOptions();
+  if(success){const reward=makeRewardCopy(target);recordHistory('upgrade-win',reward,{targetName:fullName(target),chance:effectiveChance});inventory.unshift(reward);status.className='upgrade-status success';status.textContent=`УСПЕШНЫЙ АПГРЕЙД! ${fullName(reward)} · ${money(reward.price)} · шанс ${fmtChance(chance)}${cashToSpend?` · вклад ${money(cashToSpend)}`:''}`;setUpgradeResultPanel(reward,'АПГРЕЙД УСПЕШЕН',`${money(reward.price)} получено`);document.getElementById('wheelTargetCard').classList.add('success');document.getElementById('wheelTargetCard').classList.remove('fail');playSkinRevealSound();setTimeout(playUpgradeWinSound,120);burstConfetti(1.35);toast('Успешный апгрейд!')}
+  else{sources.forEach(x=>recordHistory('upgrade-fail',x,{targetName:fullName(target),chance:effectiveChance}));status.className='upgrade-status fail';status.textContent=`НЕ УСПЕШНЫЙ АПГРЕЙД · потеряно предметов: ${sources.length}${cashToSpend?` + ${money(cashToSpend)}`:''} · шанс был ${fmtChance(chance)}`;setUpgradeResultPanel(target,'АПГРЕЙД НЕ ПРОШЁЛ','Цель не получена');document.getElementById('wheelFromCard').classList.add('fail');document.getElementById('wheelFromCard').classList.remove('success');document.getElementById('wheelTargetCard').classList.remove('success','fail');playUpgradeFailSound();setTimeout(playCoinDropSound,90);toast('Апгрейд не прошёл — ставка потеряна')}
+  saveStore();upgradeBusy=false;selectedUpgradeItemIds=[];selectedUpgradeItemId=null;selectedUpgradeTargetKey=null;upgradeSourceTouched=true;setInteractionBusy(false);updateWheelChance(upgradeChance(upgradeMultiplier));setWheelCenterAnimated(fmtChance(upgradeChance(upgradeMultiplier)));renderUpgradeSelects();renderInventory();updateOpenOptions();
  });
 }
 function renderCatalog(reset=false){
@@ -1708,7 +1972,7 @@ function renderCatalog(reset=false){
  const catalog=activeCatalogCategory==='skins'?(pricedVariants.length?pricedVariants:skins.map(normItem)):(utilityCatalog[activeCatalogCategory]||[]);
  catalogFiltered=catalog.filter(x=>(!q||fullName(x).toLowerCase().includes(q)||(x.weapon?.name||'').toLowerCase().includes(q))&&(rarity==='all'||activeCatalogCategory!=='skins'||rankOf(x)===rarity));
  if(sort==='high')catalogFiltered.sort((a,b)=>(b.price||basePrice(b))-(a.price||basePrice(a)));else if(sort==='low')catalogFiltered.sort((a,b)=>(a.price||basePrice(a))-(b.price||basePrice(b)));else if(sort==='az')catalogFiltered.sort((a,b)=>fullName(a).localeCompare(fullName(b)));else catalogFiltered.sort((a,b)=>rankValue(b)-rankValue(a));
- const count=document.getElementById('catalogCount');if(count){const catName={skins:'вариантов скинов CS2',stickers:'наклеек',charms:'брелоков',music:'музыкальных наборов',agents:'агентов',patches:'нашивок'}[activeCatalogCategory]||'предметов';count.textContent=`${catalogFiltered.length.toLocaleString('ru-RU')} ${catName}${activeCatalogCategory==='skins'?' · wear + StatTrak':''}`;}
+ const count=document.getElementById('catalogCount');if(count){const catName={skins:'вариантов скинов CS2',stickers:'наклеек',charms:'брелоков',music:'музыкальных наборов',agents:'агентов',patches:'нашивок'}[activeCatalogCategory]||'предметов';const priceStatus=activeCatalogCategory==='skins'?(priceFeedReady?` · котировок в фиде ${marketPrices.size.toLocaleString('ru-RU')}`:' · цены ≈ до загрузки фида'):'';count.textContent=`${catalogFiltered.length.toLocaleString('ru-RU')} ${catName}${activeCatalogCategory==='skins'?' · wear + StatTrak':''}${priceStatus}`;count.title='Источник: 17mafo/cs-price-tracker, ежедневный снимок Steam Market (цены в EUR); пересчёт в RUB по курсу ЦБ EUR/RUB 90,2429 на 26.10.2026. Не найденные в фиде позиции помечаются ≈.';}
  const start=catalogPage*40,arr=catalogFiltered.slice(start,start+40);const grid=document.getElementById('skinGrid');if(grid)grid.innerHTML=arr.map(x=>catalogCard({...x,price:x.price??basePrice(x)})).join('')||'<div class="empty"><b>Ничего не найдено</b>Измени запрос или категорию.</div>';
  const loadMore=document.getElementById('loadMore');if(loadMore)loadMore.style.display=start+40<catalogFiltered.length?'inline-flex':'none';
 }
@@ -1810,10 +2074,12 @@ function compactCatalogItem(x){
  return {id:x.id,name:x.name,image:x.image||x.icon||'',weapon:x.weapon?{name:x.weapon.name,id:x.weapon.id,weapon_id:x.weapon.weapon_id}:undefined,rarity:x.rarity?{name:x.rarity.name,color:x.rarity.color}:undefined,min_float:x.min_float,max_float:x.max_float,stattrak:x.stattrak,souvenir:x.souvenir,type:x.type,market_hash_name:x.market_hash_name,icon:x.icon,original:x.original?{image:x.original.image,icon:x.original.icon}:undefined,contains:Array.isArray(x.contains)?x.contains.slice(0,18).map(compactCatalogItem):undefined,contains_rare:Array.isArray(x.contains_rare)?x.contains_rare.slice(0,8).map(compactCatalogItem):undefined};
 }
 function saveCatalogCache(){
- try{const data={version:1,at:Date.now(),skins:skins.slice(0,350).map(compactCatalogItem),crates:crates.slice(0,35).map(compactCatalogItem),utility:Object.fromEntries(Object.entries(rawUtilityCatalog).map(([k,v])=>[k,(v||[]).slice(0,120).map(compactCatalogItem)]))};localStorage.setItem('yarikBattleCatalogCacheV1',JSON.stringify(data));}catch(e){console.warn('Catalog cache could not be saved',e)}
+ try{const data={version:2,at:Date.now(),skins:skins.map(compactCatalogItem),crates:crates.slice(0,90).map(compactCatalogItem),utility:Object.fromEntries(Object.entries(rawUtilityCatalog).map(([k,v])=>[k,(v||[]).slice(0,250).map(compactCatalogItem)]))};localStorage.setItem('yarikBattleCatalogCacheV2',JSON.stringify(data));}catch(e){console.warn('Full catalogue cache could not be saved; live catalogue remains available.',e);try{const data={version:2,at:Date.now(),skins:skins.map(x=>({id:x.id,name:x.name,image:x.image||'',weapon:x.weapon?{name:x.weapon.name}:undefined,rarity:x.rarity?{name:x.rarity.name,color:x.rarity.color}:undefined,min_float:x.min_float,max_float:x.max_float,stattrak:x.stattrak,souvenir:x.souvenir,type:x.type,market_hash_name:x.market_hash_name}))};localStorage.setItem('yarikBattleCatalogCacheV2',JSON.stringify(data))}catch(e2){}}
 }
 function readCatalogCache(){
- try{const v=JSON.parse(localStorage.getItem('yarikBattleCatalogCacheV1')||'null');if(v&&v.version===1&&Array.isArray(v.skins)&&v.skins.length)return v}catch(e){}return null;
+ try{const v=JSON.parse(localStorage.getItem('yarikBattleCatalogCacheV2')||'null');if(v&&v.version===2&&Array.isArray(v.skins)&&v.skins.length)return v}catch(e){}
+ // Migration fallback: keep a previous cached set visible while the full live catalog refreshes.
+ try{const old=JSON.parse(localStorage.getItem('yarikBattleCatalogCacheV1')||'null');if(old&&Array.isArray(old.skins)&&old.skins.length)return {...old,version:1}}catch(e){}return null;
 }
 function safeCatalogStep(label,fn){try{fn()}catch(error){console.error('Yarik-Battle catalog section failed:',label,error)}}
 function renderCatalogShell(){
@@ -1829,7 +2095,7 @@ function renderCatalogShell(){
  safeCatalogStep('history',()=>renderActiveHistory());
  safeCatalogStep('case contents',()=>renderCaseContents());
  safeCatalogStep('open options',()=>updateOpenOptions());
- const count=document.getElementById('catalogCount');if(count)count.textContent=`${skins.length.toLocaleString('ru-RU')} предметов в доступном каталоге · цены без подтверждённой котировки оценочные`;
+ const count=document.getElementById('catalogCount');if(count){count.title='Полный список базовых скинов загружается из ByMykel/CSGO-API; котировки — из ежедневного Steam Market feed 17mafo/cs-price-tracker. '+PRICE_RATE_LABEL+'. Цены без точного совпадения помечены ≈.';}
 }
 async function fetchCatalogJson(path){
  const controller=typeof AbortController!=='undefined'?new AbortController():null;
@@ -1848,17 +2114,40 @@ async function fetchCatalogJson(path){
  finally{if(timer)clearTimeout(timer);if(controller)controller.abort()}
 }
 async function fetchMarketPriceJson(){
- const controller=typeof AbortController!=='undefined'?new AbortController():null;
- const timer=controller?setTimeout(()=>controller.abort(),9000):null;
- try{return await Promise.any(PRICE_API_SOURCES.map(async url=>{const response=await fetch(url,{cache:'no-cache',mode:'cors',signal:controller?.signal});if(!response.ok)throw new Error('HTTP '+response.status);const data=await response.json();if(!data||typeof data!=='object'||Array.isArray(data))throw new Error('Invalid market price JSON');return data}))}
- catch(error){console.warn('Market price feed unavailable; estimates will be used.',error);return null}
- finally{if(timer)clearTimeout(timer);if(controller)controller.abort()}
+ // Price snapshots can be large; try one mirror at a time to avoid downloading the whole feed multiple times.
+ for(const url of PRICE_API_SOURCES){
+  const controller=typeof AbortController!=='undefined'?new AbortController():null;
+  const timer=controller?setTimeout(()=>controller.abort(),9000):null;
+  try{
+   const response=await fetch(url,{cache:'no-cache',mode:'cors',signal:controller?.signal});
+   if(!response.ok)throw new Error('HTTP '+response.status);
+   const data=await response.json();if(!data||typeof data!=='object')throw new Error('Invalid market price JSON');return data;
+  }catch(error){console.warn('Price mirror unavailable:',url,error)}
+  finally{if(timer)clearTimeout(timer);if(controller)controller.abort()}
+ }
+ console.warn('Market price feed unavailable; estimates will be used.');return null;
 }
 function setMarketPricePayload(priceData){
  if(!priceData)return false;
- const entries=Object.entries(priceData).map(([k,v])=>[priceKey(k),parsePriceValue(v)]).filter(([k,v])=>k&&v!=null&&v>0);
+ // Support both the documented flat hash-name map and mirrors that wrap it in {prices:...} or {items:...}.
+ let root=priceData;for(const key of ['prices','items','data','results']){if(root&&root[key]&&typeof root[key]==='object'&&!Array.isArray(root[key])){root=root[key];break}}
+ let entries=Object.entries(root).map(([k,v])=>[priceKey(k),parsePriceValue(v)]).filter(([k,v])=>k&&v!=null&&v>0);
+ if(!entries.length&&Array.isArray(root)){entries=root.map(x=>[priceKey(x?.market_hash_name||x?.marketHashName||x?.name),parsePriceValue(x?.price??x?.lowest_price??x?.eur)]).filter(([k,v])=>k&&v!=null&&v>0)}
  if(!entries.length)return false;marketPrices=new Map(entries);priceFeedReady=true;return true;
 }
+
+async function refreshMarketPrices(){
+ const button=document.getElementById('refreshPricesButton');if(button){button.disabled=true;button.textContent='ОБНОВЛЯЕМ…'}
+ try{
+  const data=await fetchMarketPriceJson();
+  if(!setMarketPricePayload(data)){toast('Фид цен сейчас недоступен; оценки отмечены знаком ≈');return}
+  makePricedVariants();buildUtilityCatalog();renderCatalog(true);renderCatalogShell();saveCatalogCache();
+  const note=document.getElementById('casePriceNote');if(note){note.title='Ежедневный Steam Market feed обновлён '+new Date().toLocaleString('ru-RU')+'. Цены в EUR конвертируются в RUB по курсу ЦБ EUR/RUB 90,2429 на 26.10.2026.'}
+  toast('Цены обновлены · '+marketPrices.size.toLocaleString('ru-RU')+' котировок Steam Market');
+ }catch(e){console.error(e);toast('Не получилось обновить котировки. Проверь интернет.')}
+ finally{if(button){button.disabled=false;button.textContent='ОБНОВИТЬ ЦЕНЫ'}}
+}
+
 async function loadData(){
  loadStore();loadProfileAvatar();
  // First paint from local cache, otherwise use a compact built-in catalogue while the network starts.
@@ -1869,12 +2158,12 @@ async function loadData(){
  if(cached)toast('Каталог показан из кеша · обновляем данные');else toast('Открываем каталог CS2…');
  try{
   const requests=await Promise.all(['skins.json','crates.json','stickers.json','keychains.json','music_kits.json','agents.json','patches.json'].map(path=>fetchCatalogJson(path)));
-  const incomingSkins=normalizeList(requests[0]).filter(x=>x&&x.name&&x.image&&x.weapon);
+  const incomingSkins=normalizeList(requests[0]).filter(x=>x&&x.name).map(x=>({...x,weapon:x.weapon||{name:String(x.name).split(' | ')[0]},image:x.image||x.icon||x.original?.image||ybFallbackThumb(x.name,x.rarity?.color||'#64748b')}));
   const incomingCrates=normalizeList(requests[1]).filter(x=>x&&x.name&&x.type==='Case'&&x.image&&Array.isArray(x.contains));
   if(incomingSkins.length)skins=incomingSkins;
   if(incomingCrates.length)crates=incomingCrates;
   const keys=['stickers','charms','music','agents','patches'];
-  keys.forEach((key,i)=>{const fresh=normalizeList(requests[i+2]).filter(x=>x&&(x.name||x.market_hash_name)&&(x.image||x.icon||x.original?.image||x.original?.icon));if(fresh.length)rawUtilityCatalog[key]=fresh;});
+  keys.forEach((key,i)=>{const fresh=normalizeList(requests[i+2]).filter(x=>x&&(x.name||x.market_hash_name)).map(x=>({...x,name:x.name||x.market_hash_name,image:x.image||x.icon||x.original?.image||x.original?.icon||ybFallbackThumb(x.name||x.market_hash_name,'#64748b')}));if(fresh.length)rawUtilityCatalog[key]=fresh;});
   seedFallbackCatalog();
   marketPrices=new Map();priceFeedReady=false;
   makePricedVariants();buildUtilityCatalog();
@@ -1885,7 +2174,7 @@ async function loadData(){
   if(setMarketPricePayload(prices)){
    makePricedVariants();buildUtilityCatalog();
    safeCatalogStep('reprice and rerender catalog',()=>renderCatalogShell());
-   const note=document.getElementById('casePriceNote');if(note)note.title='Котировки из последней доступной дневной базы Steam; отсутствующие значения показаны как оценки.';
+   const note=document.getElementById('casePriceNote');if(note)note.title='Котировки из последней доступной дневной базы Steam Market; источник хранит цены в EUR. Пересчёт в ₽ по курсу EUR/RUB 90,2429 ЦБ РФ на 26.10.2026. Позиции без совпадения помечаются ≈.';
    toast(`Каталог CS2 загружен · ${marketPrices.size.toLocaleString('ru-RU')} котировок`);
   }else{
    const note=document.getElementById('casePriceNote');if(note)note.title='Источник цен недоступен. Значения с ≈ являются оценками, не актуальными котировками.';
@@ -2023,5 +2312,353 @@ body{font-size:14px;line-height:1.5}
 @keyframes cylinderItemReveal{0%{opacity:.35;transform:translateY(5px) scale(.9)}65%{opacity:1;transform:translateY(-2px) scale(1.08)}100%{opacity:1;transform:translateY(0) scale(1)}}
 @media(prefers-reduced-motion:reduce){#wheel.chance-changed,.wheel-cylinder-preview.target-changed,.wheel-cylinder-preview.target-changed img{animation:none!important}}
 </style>
+
+
+<style id="yarik-battle-v20-real-layout-fix">
+/* v20: remove every small duplicate result below the wheel. The right card is the one result surface. */
+#upgradeStatus,#wheelFromCard,#wheelTargetCard,#wheelCylinderPreview{display:none!important;visibility:hidden!important;max-height:0!important;height:0!important;min-height:0!important;margin:0!important;padding:0!important;border:0!important;overflow:hidden!important}
+.upgrade-center-column{gap:0!important;min-width:0!important}
+.upgrade-center-column .wheel-wrap{margin-bottom:12px!important}
+.upgrade-center-column .wheel-legend{margin-top:8px!important}
+.upgrade-center-column .odds{margin-top:8px!important}
+.upgrade-center-column .upgrade-ratio-note{margin-top:5px!important}
+.upgrade-center-column .upgrade-run-button{margin-top:12px!important}
+/* The right target panel stays large, balanced, and readable even after a spin clears the stake. */
+.upgrade-selected-target{align-self:stretch!important;min-height:0!important;display:flex!important;flex-direction:column!important;box-sizing:border-box!important}
+.upgrade-selected-target #upgradeTargetSummary{box-sizing:border-box!important;width:100%!important;max-width:none!important;min-width:0!important;min-height:250px!important;height:auto!important;flex:1 1 auto!important;margin:0!important;padding:18px!important;border-radius:9px!important;overflow:hidden!important}
+.upgrade-selected-target #upgradeTargetSummary:not(.upgrade-result-pinned){display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important}
+.upgrade-selected-target #upgradeTargetSummary.upgrade-result-pinned{display:grid!important;grid-template-columns:minmax(110px,.82fr) minmax(0,1fr)!important;align-items:center!important;gap:18px!important;text-align:left!important;background:linear-gradient(145deg,#1b1e23,#121417)!important;border:1px solid #4b515b!important;box-shadow:inset 0 1px #ffffff08,0 9px 28px #0003!important;animation:none!important}
+.upgrade-selected-target #upgradeTargetSummary.upgrade-result-pinned>img{width:100%!important;max-width:210px!important;height:190px!important;min-width:0!important;object-fit:contain!important;flex:0 1 auto!important;filter:drop-shadow(0 12px 15px #0009)!important}
+.upgrade-selected-target #upgradeTargetSummary.upgrade-result-pinned>div{min-width:0!important;max-width:100%!important;overflow-wrap:anywhere!important}
+.upgrade-selected-target #upgradeTargetSummary.upgrade-result-pinned strong{display:block!important;font-size:clamp(15px,1.15vw,21px)!important;line-height:1.35!important;letter-spacing:-.25px!important;overflow-wrap:anywhere!important;white-space:normal!important}
+.upgrade-selected-target #upgradeTargetSummary.upgrade-result-pinned .price{font-size:clamp(15px,1.1vw,20px)!important;font-weight:850!important;margin:12px 0 8px!important;color:#f0c66e!important;font-variant-numeric:tabular-nums}
+.upgrade-selected-target #upgradeTargetSummary.upgrade-result-pinned p{font-size:12px!important;line-height:1.55!important;color:#aeb4bf!important;overflow-wrap:anywhere!important;white-space:normal!important;margin:7px 0 0!important}
+@keyframes ybRightResultAppear{0%{opacity:.3;transform:translateY(9px) scale(.985);filter:blur(2px)}65%{opacity:1;transform:translateY(-2px) scale(1.006);filter:blur(0)}100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+.upgrade-selected-target #upgradeTargetSummary.upgrade-result-pinned.upgrade-result-item-in{animation:ybRightResultAppear .44s cubic-bezier(.18,.78,.2,1) both!important}
+/* Use the available desktop width and enforce symmetric three-column geometry. */
+@media(min-width:1281px){
+ .app:has(#page-upgrade.active) .main{width:100%!important;max-width:none!important;margin:0!important;padding:22px clamp(20px,2.2vw,42px) 38px!important;box-sizing:border-box!important}
+ #page-upgrade.active{width:100%!important;max-width:none!important;margin:0!important}
+ #page-upgrade.active .upgrade-screen-head,#page-upgrade.active .upgrade-redesign{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important;box-sizing:border-box!important}
+ #page-upgrade.active .upgrade-screen-head{min-height:54px!important;margin-bottom:14px!important;align-items:center!important}
+ #page-upgrade.active .upgrade-hero-row{width:100%!important;max-width:none!important;grid-template-columns:minmax(0,1fr) minmax(340px,.84fr) minmax(0,1fr)!important;gap:16px!important;align-items:stretch!important}
+ #page-upgrade.active .upgrade-hero-row>.upgrade-side,#page-upgrade.active .upgrade-center-column{min-width:0!important;min-height:0!important;box-sizing:border-box!important}
+ #page-upgrade.active .upgrade-selected-source .upgrade-picked{height:auto!important;min-height:250px!important}
+ #page-upgrade.active .upgrade-selected-target #upgradeTargetSummary{min-height:250px!important}
+ #page-upgrade.active .upgrade-center-column .wheel-wrap{width:min(100%,340px)!important;height:auto!important;aspect-ratio:1!important;margin:12px auto 12px!important}
+ #page-upgrade.active .upgrade-lists-row{width:100%!important;max-width:none!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:14px!important;margin-top:16px!important}
+ #page-upgrade.active .upgrade-lists-row>.upgrade-side{min-width:0!important}
+}
+@media(max-width:1280px){.app:has(#page-upgrade.active) .main{margin-left:0!important;margin-right:0!important;max-width:none!important;width:100%!important;padding:17px clamp(12px,2vw,24px) 34px!important}.upgrade-selected-target #upgradeTargetSummary.upgrade-result-pinned{grid-template-columns:minmax(80px,.72fr) minmax(0,1fr)!important;gap:12px!important;padding:12px!important}.upgrade-selected-target #upgradeTargetSummary.upgrade-result-pinned>img{height:145px!important}}
+@media(max-width:760px){.upgrade-selected-target #upgradeTargetSummary,.upgrade-selected-target #upgradeTargetSummary.upgrade-result-pinned{min-height:200px!important}.upgrade-selected-target #upgradeTargetSummary.upgrade-result-pinned{grid-template-columns:minmax(75px,.7fr) minmax(0,1fr)!important;gap:9px!important;padding:9px!important}.upgrade-selected-target #upgradeTargetSummary.upgrade-result-pinned>img{height:115px!important}.upgrade-selected-target #upgradeTargetSummary.upgrade-result-pinned strong{font-size:14px!important}.upgrade-selected-target #upgradeTargetSummary.upgrade-result-pinned .price{font-size:14px!important;margin:7px 0!important}.upgrade-selected-target #upgradeTargetSummary.upgrade-result-pinned p{font-size:11px!important}}
+@media(prefers-reduced-motion:reduce){.upgrade-selected-target #upgradeTargetSummary.upgrade-result-pinned{animation:none!important}}
+</style>
+
+<script id="yarik-battle-v20-persistent-result-fix">
+(function(){
+  // Pin the last result separately from the currently selected target. Re-rendering the grids
+  // after an upgrade must not replace the large right-hand result with the empty-state message.
+  const baseSetResult=window.setUpgradeResultPanel;
+  const baseClearResult=window.clearUpgradeResultPin;
+  const baseUpdateUpgrade=window.updateUpgrade;
+  window.__ybPinnedUpgradeResult=null;
+  if(typeof baseSetResult==='function'){
+    window.setUpgradeResultPanel=function(item,caption,detail){
+      if(item) window.__ybPinnedUpgradeResult={item:item,caption:caption||'РЕЗУЛЬТАТ АПГРЕЙДА',detail:detail||''};
+      else window.__ybPinnedUpgradeResult=null;
+      return baseSetResult.apply(this,arguments);
+    };
+  }
+  if(typeof baseClearResult==='function'){
+    window.clearUpgradeResultPin=function(){window.__ybPinnedUpgradeResult=null;return baseClearResult.apply(this,arguments)};
+  }
+  if(typeof baseUpdateUpgrade==='function'){
+    window.updateUpgrade=function(){
+      const pinned=window.__ybPinnedUpgradeResult;
+      const result=baseUpdateUpgrade.apply(this,arguments);
+      if(pinned && window.__ybPinnedUpgradeResult===pinned && typeof window.setUpgradeResultPanel==='function'){
+        window.setUpgradeResultPanel(pinned.item,pinned.caption,pinned.detail);
+      }
+      return result;
+    };
+  }
+  // Remove hidden-state remnants if an older handler re-applies a class after the spin.
+  function hideDuplicateResultStrips(){
+    ['upgradeStatus','wheelFromCard','wheelTargetCard','wheelCylinderPreview'].forEach(id=>{
+      const el=document.getElementById(id);if(el){el.style.setProperty('display','none','important');el.setAttribute('aria-hidden','true');}
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',hideDuplicateResultStrips,{once:true});else hideDuplicateResultStrips();
+})();
+</script>
+
+<style id="yarik-battle-v21-interface-polish">
+/* Yarik-Battle v21 · stock theme polish + opt-in original visual system */
+:root{--yb-ease:cubic-bezier(.2,.75,.22,1);--yb-duration:420ms;--yb-gold-soft:#f5ca78;--yb-edge:rgba(255,255,255,.075)}
+html{scroll-behavior:smooth;scroll-padding-top:82px;-webkit-text-size-adjust:100%}
+body{font-family:Inter,"Segoe UI",sans-serif!important;font-size:14px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+button,input,select,textarea{font-family:Inter,"Segoe UI",sans-serif!important}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent2);outline-offset:3px}
+button{transition:transform var(--yb-duration) var(--yb-ease),border-color var(--yb-duration) var(--yb-ease),background var(--yb-duration) var(--yb-ease),box-shadow var(--yb-duration) var(--yb-ease),color var(--yb-duration) var(--yb-ease),filter var(--yb-duration) var(--yb-ease)}
+.topbar{box-shadow:0 8px 28px #0002;transition:background .35s ease,border-color .35s ease}
+.brandmark{box-shadow:0 0 18px #e5ac4a16;transition:transform .4s var(--yb-ease),box-shadow .4s ease}
+.brand:hover .brandmark{transform:translateY(-1px) rotate(-3deg);box-shadow:0 0 24px #e5ac4a35}
+.nav button{position:relative;transition:color .22s ease,background .22s ease,transform .22s ease}
+.nav button:hover{transform:translateY(-1px)}
+.page.active{animation:ybPageEnter .48s var(--yb-ease) both}
+@keyframes ybPageEnter{0%{opacity:0;transform:translateY(10px);filter:blur(2px)}100%{opacity:1;transform:translateY(0);filter:blur(0)}}
+.promo{isolation:isolate;box-shadow:0 18px 52px #0003;transition:border-color .35s ease,box-shadow .35s ease,transform .35s ease}
+.promo:after{content:"";position:absolute;inset:-1px;pointer-events:none;z-index:0;background:linear-gradient(112deg,transparent 12%,#ffffff08 38%,transparent 53%);transform:translateX(-120%);animation:ybPromoSheen 9s ease-in-out infinite}
+@keyframes ybPromoSheen{0%,53%{transform:translateX(-120%)}72%,100%{transform:translateX(120%)}}
+.promo-copy,.promo-art{z-index:1}.promo-art img{filter:drop-shadow(0 18px 22px #0009);transition:transform .8s var(--yb-ease),filter .8s ease;animation:ybHeroFloat 6.5s ease-in-out infinite}
+@keyframes ybHeroFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-8px) rotate(1deg)}}
+.promo.promo-changing .promo-copy{animation:ybSlideReveal .42s var(--yb-ease) both}.promo.promo-changing .promo-art img{animation:ybHeroSwap .52s var(--yb-ease) both}
+@keyframes ybSlideReveal{0%{opacity:.3;transform:translateY(8px);filter:blur(2px)}100%{opacity:1;transform:none;filter:blur(0)}}
+@keyframes ybHeroSwap{0%{opacity:.2;transform:translateX(16px) scale(.94);filter:blur(5px)}100%{opacity:1;transform:translateX(0) scale(1);filter:blur(0) drop-shadow(0 18px 22px #0009)}}
+.case-tile,.major-case-tile,.firm-case-tile,.catalog-card,.skin-item,.yb-news-card,.content-box,.info-panel,.upgrade-side,.profile-stat{transition:transform .32s var(--yb-ease),border-color .32s ease,box-shadow .32s ease,background .32s ease}
+.case-tile:hover,.firm-case-tile:hover,.catalog-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px #0005}
+.major-case-tile:hover,.yb-news-card:hover{transform:translateY(-3px)}
+.btn-primary,.upgrade-run-button{position:relative;isolation:isolate;overflow:hidden;box-shadow:0 7px 18px #d99b2d1c}
+.btn-primary:after,.upgrade-run-button:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 25%,#ffffff26 50%,transparent 72%);transform:translateX(-140%);transition:transform .7s var(--yb-ease)}
+.btn-primary:hover:after,.upgrade-run-button:hover:after{transform:translateX(140%)}
+.btn-primary:hover,.upgrade-run-button:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 27px #d99b2d35}
+.btn-primary:active,.upgrade-run-button:active:not(:disabled){transform:translateY(0) scale(.985)}
+.searchbox input:focus,.filter-select:focus,.upgrade-target-search:focus{border-color:var(--accent2)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--accent2) 12%,transparent)!important}
+/* The wheel gets a machined rim and ticks without changing the calculation geometry. */
+.upgrade-center-column .wheel-wrap{isolation:isolate;filter:drop-shadow(0 12px 24px #0006)}
+.upgrade-center-column .wheel-wrap:before{content:"";position:absolute;inset:-10px;border-radius:50%;pointer-events:none;z-index:0;background:repeating-conic-gradient(from -1deg,rgba(255,255,255,.26) 0deg .45deg,transparent .6deg 6deg);mask:radial-gradient(circle,transparent 0 76%,#000 77% 80%,transparent 81%);-webkit-mask:radial-gradient(circle,transparent 0 76%,#000 77% 80%,transparent 81%);opacity:.62;transition:opacity .35s ease,filter .35s ease}
+.upgrade-center-column .wheel-wrap:after{content:"";position:absolute;inset:-4px;border:1px solid #ffffff17;border-radius:50%;pointer-events:none;z-index:0;box-shadow:inset 0 0 0 1px #0007,0 0 0 1px #0007}
+.upgrade-center-column .wheel{position:relative;isolation:isolate;background-origin:border-box;filter:saturate(1.05) contrast(1.02);box-shadow:0 0 0 4px #121418,0 0 0 5px #51545b,0 18px 45px #000b,inset 0 0 18px #ffffff10!important}
+.upgrade-center-column .wheel:before{content:""!important;display:block!important;position:absolute;inset:0;border-radius:50%;pointer-events:none;opacity:.17;background:repeating-conic-gradient(from 0deg,transparent 0deg 3.8deg,#fff 4deg 4.12deg,transparent 4.25deg 8deg);mask:radial-gradient(circle,transparent 0 75%,#000 77% 100%);-webkit-mask:radial-gradient(circle,transparent 0 75%,#000 77% 100%)}
+.upgrade-center-column .wheel:after{content:""!important;display:block!important;position:absolute;inset:7px;border:1px solid #ffffff2a;border-radius:50%;pointer-events:none;box-shadow:inset 0 0 14px #ffffff08}
+.upgrade-center-column .wheel-pointer{height:38px!important;width:3px!important;top:-3px!important;border-radius:3px!important;background:linear-gradient(180deg,#fffbe8 0%,#ffe49a 27%,#f0bd59 70%,#9d6826 100%)!important;box-shadow:0 0 5px #ffe7ad,0 0 14px #ffc75c88,0 0 24px #f1b64b42!important}
+.upgrade-center-column .wheel-pointer:before{width:8px!important;height:8px!important;top:-3px!important;box-shadow:0 0 10px #ffdf8b99!important}
+.upgrade-center-column .wheel-pointer-rotor{filter:drop-shadow(0 0 8px #eeb84c35);z-index:9!important}
+.upgrade-center-column .wheel.chance-changed{animation:ybWheelChancePop .48s var(--yb-ease) both}
+@keyframes ybWheelChancePop{0%{filter:brightness(.72) saturate(.8);transform:scale(.965)}45%{filter:brightness(1.16) saturate(1.2);transform:scale(1.012)}100%{filter:brightness(1) saturate(1.05);transform:scale(1)}}
+.upgrade-center-column .wheel-label,.upgrade-center-column #upgradeOdds{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+.chance-float,.chance-float-small{animation:ybChanceRise .54s cubic-bezier(.16,.9,.24,1) both}
+@keyframes ybChanceRise{0%{opacity:.25;transform:translateY(10px) scale(.95);filter:blur(3px)}70%{opacity:1;transform:translateY(-2px) scale(1.025);filter:blur(0)}100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+.upgrade-item-card:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--accent2) 55%,var(--line));box-shadow:0 9px 20px #0003}
+.upgrade-item-card.selected{animation:ybItemSelect .34s var(--yb-ease) both}
+@keyframes ybItemSelect{0%{transform:scale(.975)}70%{transform:scale(1.018)}100%{transform:scale(1)}}
+.modal-overlay.show .topup-modal,.modal-overlay.show .profile-modal{animation:ybModalSpring .38s cubic-bezier(.16,.84,.25,1) both}
+@keyframes ybModalSpring{0%{opacity:0;transform:translateY(16px) scale(.965);filter:blur(2px)}72%{opacity:1;transform:translateY(-2px) scale(1.006);filter:blur(0)}100%{opacity:1;transform:translateY(0) scale(1)}}
+.toast.show{animation:ybToastIn .32s var(--yb-ease) both}
+@keyframes ybToastIn{0%{opacity:0;transform:translate(-50%,10px) scale(.97)}100%{opacity:1;transform:translate(-50%,0) scale(1)}}
+/* Profile toggle */
+.profile-design-setting{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 15px;margin:14px 0 16px;border:1px solid #353942;border-radius:9px;background:linear-gradient(115deg,#222329,#191b20)}
+.profile-design-copy{display:flex;flex-direction:column;gap:4px;min-width:0}.profile-design-copy strong{font-size:12px;font-weight:850;letter-spacing:.5px}.profile-design-copy small{font-size:12px;line-height:1.45;color:#a7acb5}
+.yb-switch{display:flex;align-items:center;gap:9px;flex:0 0 auto;cursor:pointer;user-select:none}.yb-switch input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}.yb-switch-track{width:42px;height:24px;display:block;padding:3px;border-radius:20px;background:#373a43;border:1px solid #4a4d55;transition:background .28s ease,border-color .28s ease,box-shadow .28s ease}.yb-switch-track i{display:block;width:16px;height:16px;border-radius:50%;background:#c4c8d0;box-shadow:0 2px 5px #0005;transition:transform .28s var(--yb-ease),background .28s ease}.yb-switch input:checked+.yb-switch-track{background:linear-gradient(100deg,#6a56d7,#67d7c5);border-color:#7dc9c3;box-shadow:0 0 18px #64dbc12b}.yb-switch input:checked+.yb-switch-track i{transform:translateX(18px);background:white}.yb-switch input:focus-visible+.yb-switch-track{outline:2px solid var(--accent2);outline-offset:3px}.yb-switch-label{font-size:11px;color:#e3e5e9;font-weight:750;white-space:nowrap}
+/* Home events and functional daily challenges */
+.yb-playground{margin:28px 0 24px}.yb-playground-title{margin-bottom:13px}.yb-live-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid #343940;border-radius:30px;background:#1a1c21;padding:6px 10px;color:#c3c8d0;font-size:10px;font-weight:800;letter-spacing:.6px}.yb-live-pill i{width:6px;height:6px;border-radius:50%;background:#6fd5a0;box-shadow:0 0 0 4px #6fd5a016;animation:ybStatusPulse 1.8s ease infinite}
+@keyframes ybStatusPulse{50%{box-shadow:0 0 0 6px #6fd5a000;opacity:.6}}
+.yb-playground-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(300px,.85fr);gap:14px;align-items:stretch}.yb-event-column,.yb-mission-panel{min-width:0;padding:16px;border-radius:12px;border:1px solid #2d3037;background:linear-gradient(150deg,#1b1d22,#141619);box-shadow:0 12px 30px #0002}
+.yb-subhead,.yb-mission-panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:13px}.yb-subhead h3,.yb-mission-panel-head h3{font-size:14px;line-height:1.3;margin:3px 0 0;font-weight:850;letter-spacing:.2px}.yb-kicker{font-size:9px;letter-spacing:1.6px;font-weight:900;color:var(--accent2)}.yb-subhead-note{font-size:11px;color:#8f96a1;white-space:nowrap}.yb-event-cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.yb-event-case{position:relative;display:flex;flex-direction:column;min-width:0;overflow:hidden;padding:12px;border:1px solid #353842;border-radius:10px;background:linear-gradient(155deg,#20232a,#17191d 76%);isolation:isolate;transition:transform .35s var(--yb-ease),border-color .35s ease,box-shadow .35s ease}
+.yb-event-case:before{content:"";position:absolute;z-index:-1;inset:0;background:radial-gradient(ellipse at 52% 30%,var(--event-glow),transparent 64%);opacity:.58;transition:opacity .4s ease}
+.yb-event-case:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--event-accent) 50%,#3a3d46);box-shadow:0 18px 32px #0005}.yb-event-case:hover:before{opacity:1}
+.yb-event-night{--event-accent:#8d85ff;--event-glow:#6b5fdb3d}.yb-event-glitch{--event-accent:#6be8d7;--event-glow:#00b9a536}.yb-event-vault{--event-accent:#e6bd64;--event-glow:#c28b2a3b}
+.yb-event-top{display:flex;align-items:center;justify-content:space-between;gap:5px;font-size:8px;color:#a6adba;font-weight:850;letter-spacing:.7px;white-space:nowrap}.yb-event-tag{padding:3px 5px;border:1px solid color-mix(in srgb,var(--event-accent) 48%,transparent);border-radius:4px;color:var(--event-accent);font-size:8px}
+.yb-event-art{height:106px;position:relative;display:grid;place-items:center;isolation:isolate;overflow:hidden}.yb-event-art:before{content:"";position:absolute;inset:15% 12%;border:1px solid color-mix(in srgb,var(--event-accent) 28%,transparent);transform:skewY(-13deg) rotate(-6deg);box-shadow:0 0 24px color-mix(in srgb,var(--event-accent) 18%,transparent),inset 0 0 24px color-mix(in srgb,var(--event-accent) 12%,transparent)}.yb-event-art:after{content:"";position:absolute;width:58%;height:1px;background:linear-gradient(90deg,transparent,var(--event-accent),transparent);transform:rotate(-24deg);opacity:.55}
+.yb-event-orb{position:absolute;width:73px;height:73px;border-radius:50%;background:radial-gradient(circle at 34% 24%,#ffffff4b,transparent 21%),radial-gradient(circle at 45% 43%,color-mix(in srgb,var(--event-accent) 53%,#20212c),#151821 72%);border:1px solid color-mix(in srgb,var(--event-accent) 60%,transparent);box-shadow:0 0 16px color-mix(in srgb,var(--event-accent) 25%,transparent),inset 0 0 18px #0009;animation:ybOrbFloat 4.8s ease-in-out infinite}
+.yb-event-glitch .yb-event-orb{border-radius:23%;transform:rotate(28deg);animation:ybOrbTilt 7s ease-in-out infinite}.yb-event-vault .yb-event-orb{border-radius:12px;transform:rotate(45deg);animation:ybVaultFloat 5.4s ease-in-out infinite}
+.yb-event-glyph{z-index:2;font-size:37px;line-height:1;color:#f5f3ff;text-shadow:0 0 14px color-mix(in srgb,var(--event-accent) 70%,transparent);animation:ybGlyphShimmer 3.8s ease-in-out infinite}.yb-event-bars{position:absolute;bottom:15px;left:22%;right:22%;height:10px;background:repeating-linear-gradient(90deg,var(--event-accent) 0 2px,transparent 2px 7px);opacity:.18;mask:linear-gradient(90deg,transparent,black 20% 80%,transparent)}
+@keyframes ybOrbFloat{0%,100%{transform:translateY(1px) scale(1)}50%{transform:translateY(-5px) scale(1.035)}}@keyframes ybOrbTilt{0%,100%{transform:rotate(24deg) translateY(0)}50%{transform:rotate(38deg) translateY(-4px)}}@keyframes ybVaultFloat{0%,100%{transform:rotate(45deg) translateY(0)}50%{transform:rotate(54deg) translateY(-5px)}}@keyframes ybGlyphShimmer{0%,100%{opacity:.85;filter:brightness(.94)}50%{opacity:1;filter:brightness(1.23)}}
+.yb-event-case h3{font-size:14px;line-height:1.25;margin:0;color:#f5f5f7}.yb-event-case p{min-height:32px;font-size:11px;line-height:1.45;color:#9da4b1;margin:6px 0 13px}.yb-event-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:10px;border-top:1px solid #ffffff12}.yb-event-bottom strong{font-size:14px;color:var(--event-accent);white-space:nowrap}.yb-event-bottom button{display:flex;align-items:center;gap:5px;background:#292b32;border:1px solid #3e414b;border-radius:6px;padding:8px 9px;font-size:9px;font-weight:900;letter-spacing:.3px;white-space:nowrap}.yb-event-bottom button:hover{background:var(--event-accent);border-color:var(--event-accent);color:#12141a;transform:translateY(-1px)}
+.yb-event-foot{display:flex;align-items:center;gap:8px;margin-top:12px;padding:10px 11px;border:1px solid #ffffff0a;border-radius:7px;background:#101216;color:#9299a5;font-size:11px}.yb-event-spark{font-size:19px;color:var(--accent2)}.yb-event-foot button{margin-left:auto;background:transparent;color:var(--accent2);font-size:9px;font-weight:850;white-space:nowrap}.yb-event-foot button:hover{color:#fff}
+.yb-mission-panel-head{margin-bottom:12px}.yb-mission-emblem{width:34px;height:34px;display:grid;place-items:center;border-radius:9px;color:#f5d58d;font-size:20px;background:linear-gradient(145deg,#59401c,#2a2318);border:1px solid #7c5d2d;box-shadow:inset 0 0 14px #f5bd3d0d}
+.yb-daily-reward{display:flex;align-items:center;gap:10px;padding:10px;border-radius:9px;background:linear-gradient(105deg,#29251c,#201d18);border:1px solid #5a4728;margin-bottom:12px}.yb-daily-icon{flex:0 0 34px;width:34px;height:34px;border-radius:8px;display:grid;place-items:center;background:#5a421c;color:#ffe3a3;font-size:21px}.yb-daily-reward>div:nth-child(2){min-width:0;display:flex;flex-direction:column;gap:3px}.yb-daily-reward strong{font-size:12px}.yb-daily-reward small{font-size:10px;color:#b3a58a}.yb-daily-reward button{margin-left:auto;padding:8px 10px;border-radius:6px;background:linear-gradient(110deg,#f2ce82,#c88d3b);color:#20180d;font-size:9px;letter-spacing:.35px;font-weight:950;white-space:nowrap}.yb-daily-reward button:disabled{opacity:.5;cursor:default;filter:grayscale(.6)}
+.yb-mission-list{display:grid;gap:8px}.yb-mission-item{display:grid;grid-template-columns:32px minmax(0,1fr) auto;align-items:center;gap:9px;padding:10px;border:1px solid #2f3239;background:#191b20;border-radius:8px;animation:ybMissionIn .4s var(--yb-ease) both;animation-delay:var(--mission-delay,0ms)}@keyframes ybMissionIn{0%{opacity:0;transform:translateY(7px)}100%{opacity:1;transform:none}}
+.yb-mission-icon{width:32px;height:32px;border-radius:8px;display:grid;place-items:center;color:#dbe4f3;background:#252a34;border:1px solid #393f4b;font-weight:900}.yb-mission-info{min-width:0}.yb-mission-info strong{display:block;font-size:11px;line-height:1.35}.yb-mission-info small{display:block;margin-top:3px;color:#9097a4;font-size:10px}.yb-mission-progress{height:3px;margin-top:7px;border-radius:3px;background:#343741;overflow:hidden}.yb-mission-progress i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,#d5a34a,#eddb9a);transition:width .5s var(--yb-ease)}.yb-mission-claim{min-width:56px;padding:7px 8px;border:1px solid #3a3e46;border-radius:6px;background:#25282e;color:#bec3cb;font-size:9px;font-weight:900}.yb-mission-claim.ready{border-color:#d5ad5f;background:#3b2e1b;color:#ffe3a3}.yb-mission-claim:disabled{opacity:.4;cursor:default}.yb-mission-foot{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;border-top:1px solid #ffffff10;margin-top:12px;padding-top:11px;color:#818995;font-size:10px;line-height:1.45}.yb-mission-foot button{color:var(--accent2);font-size:9px;font-weight:900;white-space:nowrap}.yb-mission-placeholder{padding:18px;text-align:center;color:#8f96a1;font-size:11px}
+/* Alternate design is opt-in. Default remains the existing Yarik-Battle look. */
+body.yb-design-next{--bg:#080a13;--panel:#111525;--panel2:#171d31;--line:#2b3450;--text:#f0f3ff;--muted:#9da7c0;--accent:#8b7cff;--accent2:#7ff3d4;--green:#74efbd;--red:#f381a0;--blue:#7bbdff;--purple:#b89cff;--orange:#ffb56b;--shadow:0 18px 55px #0008;background-color:#080a13!important;background-image:radial-gradient(ellipse at 15% -15%,#37307845,transparent 36%),radial-gradient(ellipse at 90% 30%,#0e88842b,transparent 33%),linear-gradient(180deg,#0b0d19,#070910 70%)!important;color:var(--text)}
+body.yb-design-next .app{background:transparent!important}body.yb-design-next .topbar{background:#0a0d19d9!important;border-color:#28304a!important;box-shadow:0 10px 30px #0004,0 1px #a5a8ff0a inset!important;backdrop-filter:blur(22px)}body.yb-design-next .brandmark{background:linear-gradient(135deg,#7ff3d4,#8b7cff)!important;color:#0a0c18!important;clip-path:none;border-radius:9px;box-shadow:0 0 25px #7ff3d41d!important}body.yb-design-next .brand em{color:#7ff3d4!important}body.yb-design-next .nav button.active{background:linear-gradient(115deg,#8b7cff20,#7ff3d40d)!important;color:#fff!important;box-shadow:inset 0 -2px #7ff3d4!important}body.yb-design-next .balance{border-color:#343d5a!important;background:#151a2b!important;box-shadow:inset 0 1px #ffffff08}body.yb-design-next .profile{background:#171c2c!important;border:1px solid #424a6a!important;color:#7ff3d4!important}body.yb-design-next .main{max-width:1680px!important}
+body.yb-design-next .promo{border-color:#37365b!important;background:linear-gradient(115deg,#181934,#101523 58%,#102524)!important;box-shadow:0 20px 65px #080817a8,0 0 0 1px #8b7cff0d inset!important}body.yb-design-next .promo:before{background:radial-gradient(ellipse at 78% 50%,#7ff3d41c,transparent 45%),linear-gradient(120deg,transparent 0 56%,#8b7cff10 56% 57%,transparent 57%)!important}body.yb-design-next .promo h1 span{color:#7ff3d4!important}body.yb-design-next .promo .eyebrow{color:#8f82ff!important}
+body.yb-design-next .section-head h2,body.yb-design-next .page-title h1{color:#f1f2ff!important;letter-spacing:.2px}body.yb-design-next .case-tile,body.yb-design-next .major-case-tile,body.yb-design-next .firm-case-tile,body.yb-design-next .catalog-card,body.yb-design-next .content-box,body.yb-design-next .info-panel,body.yb-design-next .yb-news-card,body.yb-design-next .yb-event-column,body.yb-design-next .yb-mission-panel{border-color:#2c3550!important;background:linear-gradient(145deg,#171b2d,#0f1321 77%)!important;box-shadow:0 10px 35px #02030a45,inset 0 1px #ffffff05!important}body.yb-design-next .case-tile:hover,body.yb-design-next .catalog-card:hover,body.yb-design-next .major-case-tile:hover{border-color:#7770e4!important;box-shadow:0 18px 45px #040511a8,0 0 0 1px #8b7cff21!important}body.yb-design-next .btn-primary,body.yb-design-next .upgrade-run-button{background:linear-gradient(110deg,#8b7cff,#5d62cb 50%,#56cfb8)!important;color:#090c18!important;border:0!important;box-shadow:0 9px 28px #6d69ef30!important}body.yb-design-next .btn-secondary{background:#171d30!important;border-color:#343c58!important;color:#dce2fa!important}body.yb-design-next .btn-secondary:hover{border-color:#7f77e7!important;background:#202640!important}
+body.yb-design-next .upgrade-side,body.yb-design-next .upgrade-center-column{background:linear-gradient(155deg,#171b2e,#101420 74%)!important;border-color:#303955!important;box-shadow:0 18px 45px #03040b55,inset 0 1px #ffffff06!important;border-radius:14px!important}body.yb-design-next .upgrade-column-head h3{color:#eef0ff!important}body.yb-design-next .upgrade-column-head>span{color:#9aa8cb!important}body.yb-design-next .upgrade-picked,body.yb-design-next #upgradeTargetSummary{background:linear-gradient(145deg,#11172a,#0d1220)!important;border-color:#323c5a!important;border-radius:11px!important}body.yb-design-next .upgrade-item-card{background:linear-gradient(150deg,#171c30,#101525)!important;border-color:#2c3651!important}body.yb-design-next .upgrade-item-card.selected{border-color:#7ff3d4!important;box-shadow:0 0 0 1px #7ff3d447,0 0 20px #7ff3d410!important}body.yb-design-next .multiplier-chip{background:#151a2b!important;border-color:#343c59!important;color:#d5ddf4!important}body.yb-design-next .multiplier-chip.active{background:linear-gradient(115deg,#7ff3d4,#9f97ff)!important;color:#0b1020!important;border-color:transparent!important}
+body.yb-design-next .upgrade-center-column .wheel-wrap:before{opacity:.78;background:repeating-conic-gradient(from -1deg,#9c9aff8c 0deg .45deg,transparent .6deg 6deg)!important}body.yb-design-next .upgrade-center-column .wheel-wrap:after{border-color:#7ff3d442!important;box-shadow:inset 0 0 0 1px #0b0e18,0 0 0 1px #7ff3d414!important}body.yb-design-next .upgrade-center-column .wheel{box-shadow:0 0 0 4px #101425,0 0 0 5px #6b6799,0 0 32px #7ff3d411,inset 0 0 22px #ffffff0c!important}body.yb-design-next .upgrade-center-column .wheel-label{color:#f1f0ff!important;text-shadow:0 0 18px #9a95ff55!important}body.yb-design-next .upgrade-center-column .wheel-subtitle{color:#aeb6d8!important}body.yb-design-next .upgrade-center-column .wheel-pointer{background:linear-gradient(180deg,#fffbe8,#ffd98b 50%,#c08d36)!important}
+body.yb-design-next .profile-modal,body.yb-design-next .topup-modal,body.yb-design-next .admin-modal{background:linear-gradient(150deg,#1a2037,#101421)!important;border-color:#374163!important;box-shadow:0 30px 100px #000c,0 0 0 1px #8b7cff12!important}body.yb-design-next .profile-stat{background:#12172a!important;border-color:#303955!important}body.yb-design-next .profile-stat strong{color:#7ff3d4!important}body.yb-design-next .profile-design-setting{background:linear-gradient(110deg,#1a2038,#141a2b)!important;border-color:#3d4567!important}body.yb-design-next .yb-event-column,body.yb-design-next .yb-mission-panel{background:linear-gradient(150deg,#171b2f,#101421)!important}body.yb-design-next .yb-mission-item{background:#12182a!important;border-color:#303955!important}body.yb-design-next .yb-daily-reward{background:linear-gradient(105deg,#1d2334,#18202a)!important;border-color:#615737!important}body.yb-design-next .yb-event-case{background:linear-gradient(155deg,#1a2036,#101523 80%)!important;border-color:#303956!important}body.yb-design-next .yb-event-foot{background:#0c1020!important;border-color:#262f4a!important}
+body.yb-design-next .catalog-tabs button.active,body.yb-design-next .catalog-tabs button:hover{background:linear-gradient(110deg,#8b7cff25,#7ff3d412)!important;border-color:#6862af!important;color:#f2f0ff!important}body.yb-design-next .modal-close{background:#202742!important;border-color:#3a4466!important}
+@media(max-width:1080px){.yb-playground-grid{grid-template-columns:1fr}.yb-event-cases{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.profile-design-setting{align-items:flex-start;padding:12px}.profile-design-copy small{max-width:220px}.yb-event-column,.yb-mission-panel{padding:12px}.yb-event-cases{grid-template-columns:1fr}.yb-event-case{display:grid;grid-template-columns:minmax(0,1fr) 100px;grid-template-rows:auto auto 1fr auto;column-gap:12px}.yb-event-top{grid-column:1/-1}.yb-event-art{grid-column:2;grid-row:2/4;height:90px}.yb-event-case h3{grid-column:1;grid-row:2;align-self:end}.yb-event-case p{grid-column:1;grid-row:3;min-height:0}.yb-event-bottom{grid-column:1/-1;grid-row:4}.yb-event-art:before{inset:13% 5%}.yb-event-orb{width:58px;height:58px}.yb-event-glyph{font-size:29px}.yb-event-foot{flex-wrap:wrap}.yb-event-foot button{margin-left:0}}
+@media(max-width:420px){.yb-mission-item{grid-template-columns:30px minmax(0,1fr)}.yb-mission-claim{grid-column:2;justify-self:start}.yb-mission-foot{flex-direction:column}.yb-daily-reward{flex-wrap:wrap}.yb-daily-reward button{margin-left:auto}}
+@media(prefers-reduced-motion:reduce){.promo:after,.promo-art img,.yb-event-orb,.yb-event-glyph,.yb-live-pill i{animation:none!important}.page.active{animation:none!important}}
+</style>
+<style id="yarik-battle-v21-target-effects">
+@media(max-width:900px){
+ .topbar{height:auto!important;position:relative!important}
+ .top-inner{height:auto!important;min-height:62px!important;flex-wrap:wrap!important;gap:8px!important;padding:10px 14px!important}
+ .nav{order:3!important;flex:1 1 100%!important;width:100%!important;height:auto!important;min-width:0!important;overflow-x:auto!important;justify-content:flex-start!important;border-top:1px solid #282a2f!important;padding-top:6px!important}
+ .nav button{white-space:nowrap!important;padding:8px 12px!important}
+ .top-right{order:2!important;margin-left:auto!important;flex:0 0 auto!important;max-width:100%!important}
+ .brand{margin-right:auto!important}
+}
+.yb-target-update{animation:ybTargetCardChange .62s cubic-bezier(.16,.9,.24,1) both!important}
+@keyframes ybTargetCardChange{0%{opacity:.48;transform:translateY(10px) scale(.975);filter:blur(3px);box-shadow:0 0 0 1px #f4ca7655,0 0 0 #f4ca7600}58%{opacity:1;transform:translateY(-2px) scale(1.012);filter:blur(0);box-shadow:0 0 0 1px #f4ca7633,0 0 28px #f4ca7610}100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0);box-shadow:none}}
+</style>
+<script id="yarik-battle-v21-features">
+(function(){
+  'use strict';
+  const DESIGN_KEY='yarikBattleThemeV3';
+  const DAILY_KEY='yarikBattleDailyProgressV1';
+  let ybDailyMemory=null;
+  let ybDesignMemory='off';
+  const todayKey=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
+  function readDaily(){
+    let data=null;
+    try{data=JSON.parse(localStorage.getItem(DAILY_KEY)||'null')}catch(e){data=ybDailyMemory?{...ybDailyMemory,claimed:[...(ybDailyMemory.claimed||[])]}:null}
+    if(!data&&ybDailyMemory)data={...ybDailyMemory,claimed:[...(ybDailyMemory.claimed||[])]};
+    if(!data||data.date!==todayKey())data={date:todayKey(),cases:0,items:0,upgrades:0,claimed:[],bonusClaimed:false};
+    data.cases=Math.max(0,Number(data.cases)||0);data.items=Math.max(0,Number(data.items)||0);data.upgrades=Math.max(0,Number(data.upgrades)||0);
+    if(!Array.isArray(data.claimed))data.claimed=[];data.bonusClaimed=!!data.bonusClaimed;
+    return data;
+  }
+  function writeDaily(data){ybDailyMemory={...data,claimed:[...(data.claimed||[])]};try{localStorage.setItem(DAILY_KEY,JSON.stringify(data))}catch(e){} }
+  function setYbDesignMode(enabled){
+    const useOld=!!enabled;
+    document.body.classList.toggle('yb-design-next',!useOld);
+    ybDesignMemory=useOld?'on':'off';
+    try{localStorage.setItem(DESIGN_KEY,useOld?'on':'off')}catch(e){}
+    const input=document.getElementById('ybDesignModeToggle');if(input)input.checked=useOld;
+    const label=document.querySelector('.yb-switch-label');if(label)label.textContent=useOld?'Включён':'Выключен';
+    document.dispatchEvent(new CustomEvent('yb:design-change',{detail:{enabled:!useOld,old:useOld}}));
+    if(typeof toast==='function')toast(useOld?'Возвращён старый дизайн':'Включён новый дизайн Yarik-Battle');
+  }
+  window.setYbDesignMode=setYbDesignMode;
+  function syncDesignToggle(){const box=document.getElementById('ybDesignModeToggle');if(box)box.checked=!document.body.classList.contains('yb-design-next');const label=document.querySelector('.yb-switch-label');if(label)label.textContent=box?.checked?'Включён':'Выключен'}
+  try{ybDesignMemory=localStorage.getItem(DESIGN_KEY)==='on'?'on':'off'}catch(e){}
+  // The blue/purple/mint Yarik-Battle theme is the default on every fresh install.
+  document.body.classList.toggle('yb-design-next',ybDesignMemory!=='on');
+  const profileModal=document.getElementById('profileModal');
+  if(profileModal&&'MutationObserver'in window)new MutationObserver(syncDesignToggle).observe(profileModal,{attributes:true,attributeFilter:['class']});
+  syncDesignToggle();
+
+  const definitions=[
+    {id:'cases2',icon:'▤',title:'Разогрев',description:'Открой 2 кейса',goal:2,reward:120,field:'cases'},
+    {id:'items3',icon:'✦',title:'В коллекцию',description:'Получи 3 предмета',goal:3,reward:120,field:'items'},
+    {id:'upgrade1',icon:'↗',title:'Первая прокачка',description:'Проведи 1 апгрейд',goal:1,reward:180,field:'upgrades'}
+  ];
+  function updateMissionUI(){
+    const root=document.getElementById('ybMissionList'),button=document.getElementById('ybDailyBonusButton');if(!root||!button)return;
+    const data=readDaily();writeDaily(data);button.disabled=data.bonusClaimed;button.textContent=data.bonusClaimed?'ПОЛУЧЕН':'ЗАБРАТЬ';
+    root.innerHTML=definitions.map((m,i)=>{
+      const count=Math.min(m.goal,data[m.field]||0),done=count>=m.goal,claimed=data.claimed.includes(m.id);
+      const buttonText=claimed?'ГОТОВО':done?'ЗАБРАТЬ':`${count}/${m.goal}`;
+      return `<div class="yb-mission-item" style="--mission-delay:${i*70}ms"><div class="yb-mission-icon">${m.icon}</div><div class="yb-mission-info"><strong>${m.title}</strong><small>${m.description} · награда ${m.reward} ₽</small><div class="yb-mission-progress"><i style="width:${Math.min(100,count/m.goal*100)}%"></i></div></div><button type="button" class="yb-mission-claim ${done&&!claimed?'ready':''}" ${!done||claimed?'disabled':''} onclick="claimYbMission('${m.id}')">${buttonText}</button></div>`;
+    }).join('');
+  }
+  window.renderYbMissions=updateMissionUI;
+  window.claimYbDailyBonus=function(){
+    const data=readDaily();if(data.bonusClaimed){if(typeof toast==='function')toast('Ежедневный бонус уже получен');return}
+    data.bonusClaimed=true;writeDaily(data);balance=roundPrice((Number(balance)||0)+250);if(typeof saveStore==='function')saveStore();updateMissionUI();if(typeof toast==='function')toast('Ежедневная награда: +250 ₽');
+  };
+  window.claimYbMission=function(id){
+    const mission=definitions.find(x=>x.id===id),data=readDaily();if(!mission||data.claimed.includes(id))return;
+    if((Number(data[mission.field])||0)<mission.goal){if(typeof toast==='function')toast('Сначала выполни задание');return}
+    data.claimed.push(id);writeDaily(data);balance=roundPrice((Number(balance)||0)+mission.reward);if(typeof saveStore==='function')saveStore();updateMissionUI();if(typeof toast==='function')toast(`Награда получена: +${mission.reward} ₽`);
+  };
+  function addDailyProgress(kind,amount){const data=readDaily();data[kind]=Math.min(99999,(Number(data[kind])||0)+Math.max(1,Number(amount)||1));writeDaily(data);updateMissionUI()}
+  // Track actual attempts after the original handlers have validated balance/selections.
+  const baseOpenRoulette=window.openRoulette;
+  if(typeof baseOpenRoulette==='function')window.openRoulette=function(){const before=Number(balance)||0;const caseName=selectedCase?.name;const result=baseOpenRoulette.apply(this,arguments);const after=Number(balance)||0;if(caseName&&after<before){const qty=Math.max(1,Math.floor(Number(lastOpenedQty)||1));addDailyProgress('cases',qty);addDailyProgress('items',qty)}return result};
+  const baseRunUpgrade=window.runUpgrade;
+  if(typeof baseRunUpgrade==='function')window.runUpgrade=function(){const before=Number(upgradeSpinCount)||0;const result=baseRunUpgrade.apply(this,arguments);const after=Number(upgradeSpinCount)||0;if(after>before)addDailyProgress('upgrades',1);return result};
+  const baseSaveStore=window.saveStore;
+  if(typeof baseSaveStore==='function')window.saveStore=function(){const result=baseSaveStore.apply(this,arguments);updateMissionUI();return result};
+
+  const eventCases={
+    night:{name:'Ночной рынок',price:249,source:'Kilowatt Case',desc:'Тёмная коллекция с редкими акцентами'},
+    overdrive:{name:'Неоновый сбой',price:799,source:'Revolution Case',desc:'Контрастные цвета и редкие находки'},
+    vault:{name:'Золотой архив',price:2499,source:'Gallery Case',desc:'Премиальная подборка для коллекции'}
+  };
+  window.launchYbEventCase=function(id){
+    const def=eventCases[id];if(!def){if(typeof toast==='function')toast('Событие не найдено');return}
+    const source=(crates||[]).find(c=>c?.name===def.source&&c.type==='Case'&&Array.isArray(c.contains)&&c.contains.length)||
+      (crates||[]).find(c=>c?.type==='Case'&&Array.isArray(c.contains)&&c.contains.length);
+    const pool=source?.contains?.length?source.contains:(Array.isArray(skins)?skins.filter(x=>x?.name&&x?.image):[]);
+    if(!pool.length){if(typeof toast==='function')toast('Каталог ещё загружается. Попробуй через пару секунд.');return}
+    selectedCase={type:'MajorCase',id:`yb-event-${id}`,name:def.name,image:source?.image||chooseCrateImage()||pool[0]?.image||'',contains:pool,contains_rare:source?.contains_rare||[],_isMajorCase:true,_majorPrice:def.price,_ybEventCase:true,_ybEventDesc:def.desc};
+    caseItems=makeCasePool(selectedCase);
+    if(!caseItems.length){if(typeof toast==='function')toast('В этом событии пока нет предметов');return}
+    const hero=document.getElementById('heroCaseImg'),detail=document.getElementById('detailCaseImg');if(hero){hero.src=selectedCase.image;hero.alt=def.name;hero.style.filter=''}if(detail){detail.src=selectedCase.image;detail.alt=def.name;detail.style.filter=''}
+    if(typeof syncCaseDetails==='function')syncCaseDetails();if(typeof renderCaseContents==='function')renderCaseContents();if(typeof openCasePage==='function')openCasePage();
+    if(typeof toast==='function')toast(`${def.name} · ${def.price.toLocaleString('ru-RU')} ₽`);
+  };
+  const baseSyncCaseDetails=window.syncCaseDetails;
+  if(typeof baseSyncCaseDetails==='function')window.syncCaseDetails=function(){const r=baseSyncCaseDetails.apply(this,arguments);if(selectedCase?._ybEventCase){const sub=document.getElementById('casePageSub'),note=document.getElementById('casePriceNote');if(sub)sub.textContent='YARIK-BATTLE · EVENT SERIES';if(note)note.textContent='Тематический кейс Yarik-Battle · фиксированная стоимость · ключ не включён';}return r};
+
+  // Better affordances: progressive entrance for new catalog data, and a small visual refresh when a target is selected.
+  const baseSelectUpgradeTarget=window.selectUpgradeTarget;
+  if(typeof baseSelectUpgradeTarget==='function')window.selectUpgradeTarget=function(){const r=baseSelectUpgradeTarget.apply(this,arguments);const card=document.getElementById('upgradeTargetSummary');if(card){card.classList.remove('yb-target-update');void card.offsetWidth;card.classList.add('yb-target-update')}return r};
+  const baseSetUpgradeResultPanel=window.setUpgradeResultPanel;
+  if(typeof baseSetUpgradeResultPanel==='function')window.setUpgradeResultPanel=function(){const r=baseSetUpgradeResultPanel.apply(this,arguments);const card=document.getElementById('upgradeTargetSummary');if(card){card.classList.remove('yb-target-update');void card.offsetWidth;card.classList.add('yb-target-update')}return r};
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.body.classList.remove('yb-design-preview-focus')}});
+  updateMissionUI();
+})();
+</script>
+
+
+<script id="yarik-battle-v23-behavior">
+(function(){
+  'use strict';
+  // Small wallet writes happen after the close animation starts, so the UI doesn't freeze during balance refill.
+  let ybLightSaveTimer=0, ybRefreshTimer=0;
+  window.ybQueueLightStoreSave=function(){
+    if(ybLightSaveTimer)clearTimeout(ybLightSaveTimer);
+    ybLightSaveTimer=setTimeout(()=>{
+      ybLightSaveTimer=0;
+      try{localStorage.setItem('yarikBattleBalanceV2',JSON.stringify({balance,updatedAt:Date.now()}))}catch(e){}
+    },70);
+  };
+  window.ybRefreshBalanceControls=function(){
+    if(ybRefreshTimer)clearTimeout(ybRefreshTimer);
+    ybRefreshTimer=setTimeout(()=>{
+      ybRefreshTimer=0;
+      try{if(typeof updateOpenOptions==='function')requestAnimationFrame(()=>updateOpenOptions())}catch(e){}
+      try{
+        if(document.getElementById('page-upgrade')?.classList.contains('active')&&!upgradeBusy){
+          const from=makeUpgradeSource(),target=upgradeLastTargets.find(x=>targetKey(x)===selectedUpgradeTargetKey);
+          const cap=usefulUpgradeStakeLimit(from,target,upgradeMultiplier),input=document.getElementById('upgradeCashStakeInput');
+          if(input){input.max=String(cap);input.disabled=cap<=0}
+          const available=document.getElementById('upgradeCashAvailable');if(available)available.textContent=money(balance);
+          const label=document.getElementById('upgradeCashStakeLabel');if(label)label.textContent=money(upgradeCashStake);
+          if(typeof updateWheelChance==='function')updateWheelChance(from&&target?chanceForUpgradeTarget(from,target,upgradeMultiplier,upgradeCashStake):upgradeChance(upgradeMultiplier));
+        }
+      }catch(e){}
+    },36);
+  };
+  // The original chance editor is intentionally disabled; keep the original preset probabilities only.
+  try{upgradeChanceOverrides={...DEFAULT_UPGRADE_CHANCES}}catch(e){}
+  try{localStorage.removeItem('yarikUpgradeChanceOverrides')}catch(e){}
+
+  // Separate warm metallic sounds for opening, sale, balance and regular UI actions.
+  window.playUiActionSound=function(){if(!soundEnabled)return;audioNote(440,365,.045,.012,'triangle');audioNoise(.016,.006,1550,.004)};
+  window.playTopupSound=function(){if(!soundEnabled)return;audioNoise(.045,.014,1050);audioNote(230,430,.10,.028,'triangle',.015);audioNote(560,790,.12,.024,'sine',.075);audioNoise(.04,.012,1900,.13)};
+  window.playSaleSound=function(){if(!soundEnabled)return;audioNoise(.05,.025,2300);audioNote(1050,720,.11,.035,'sine',.02);audioNote(760,1260,.13,.032,'triangle',.07);audioNoise(.035,.01,3100,.13)};
+  window.playSkinRevealSound=function(){if(!soundEnabled)return;audioNoise(.075,.02,420);audioNote(175,330,.14,.035,'triangle',.02);audioNote(390,680,.17,.032,'sine',.10);audioNoise(.035,.016,1800,.16)};
+  window.playUpgradeWinSound=function(){if(!soundEnabled)return;audioNoise(.06,.027,260);audioNote(180,310,.14,.04,'triangle',.015);audioNote(340,610,.18,.04,'sine',.08);audioNote(680,950,.16,.025,'triangle',.18);audioNoise(.045,.014,2200,.22)};
+  window.playUpgradeFailSound=function(){if(!soundEnabled)return;audioNoise(.10,.032,180);audioNote(180,72,.25,.045,'sawtooth',.015);audioNote(96,48,.20,.03,'triangle',.15);audioNoise(.06,.018,430,.20)};
+  window.playCoinDropSound=function(){if(!soundEnabled)return;audioNote(190,78,.22,.035,'triangle');audioNoise(.06,.018,135,.045)};
+
+  // Wrap sales so they get a dedicated positive sale sound without changing sale logic.
+  const originalSellItem=window.sellItem;
+  if(typeof originalSellItem==='function')window.sellItem=function(id){const before=inventory.length;const result=originalSellItem.apply(this,arguments);if(inventory.length<before)playSaleSound();return result};
+  const originalSellAll=window.sellAll;
+  if(typeof originalSellAll==='function')window.sellAll=function(){const before=inventory.length;const result=originalSellAll.apply(this,arguments);if(before&&inventory.length===0)playSaleSound();return result};
+
+  // Add a short tactile sound to UI navigation, selections and modal controls; avoid layering it over spins/sales/top-ups.
+  document.addEventListener('pointerdown',event=>{
+    if(!soundEnabled)return;
+    const hit=event.target.closest('button,.case-tile,.major-case-tile,.firm-case-tile,.catalog-card,.upgrade-item-card');
+    if(!hit||hit.disabled)return;
+    const button=hit.matches('button')?hit:hit.querySelector('button');
+    const action=String(button?.getAttribute('onclick')||hit.getAttribute('onclick')||'');
+    if(/runUpgrade|open(?:Selected|Case)|sellItem|sellAll|addDemoFunds|addCustomDemoFunds/i.test(action)||button?.id==='upgradeButton')return;
+    if(button?.matches('.inv-actions button')&&/sell/i.test(action))return;
+    playUiActionSound();
+  },true);
+})();
+</script>
 
 </body></html>
